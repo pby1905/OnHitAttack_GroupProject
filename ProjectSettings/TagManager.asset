@@ -10,10 +10,13 @@ TagManager:
   - TransparentFX
   - Ignore Raycast
   - Ethan
+
+  - Boss Layer
+
   - Water
   - UI
-  - 
-  - 
+  - UndergroundLayer
+  - Background
   - 
   - 
   - 
