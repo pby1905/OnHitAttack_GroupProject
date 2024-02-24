@@ -42,9 +42,16 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 2937354957
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
+
+  - name: Top
+    uniqueID: 3546557759
+
   - name: Background
     uniqueID: 3402371879
     locked: 0
@@ -53,4 +60,5 @@ TagManager:
     locked: 0
   - name: Ethan
     uniqueID: 3736803249
+
     locked: 0
