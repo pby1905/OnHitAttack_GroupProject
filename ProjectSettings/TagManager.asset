@@ -9,7 +9,10 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
+  - Ethan
+
   - Boss Layer
+
   - Water
   - UI
   - UndergroundLayer
@@ -45,6 +48,17 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+
   - name: Top
     uniqueID: 3546557759
+
+  - name: Background
+    uniqueID: 3402371879
+    locked: 0
+  - name: Ground
+    uniqueID: 520079261
+    locked: 0
+  - name: Ethan
+    uniqueID: 3736803249
+
     locked: 0
