@@ -4,11 +4,14 @@ using UnityEngine;
 using Pathfinding;
 using UnityEngine.Rendering;
 
+
 public class EnemyAI : MonoBehaviour
 {
     public Transform target;
     public float speed = 200f;
     public float nextWaypointDistance = 3f;
+
+    public Transform enemyGraphic;
     Path path;
     int currentWayPoint = 0;
     bool reachedEndOfPath = false;
@@ -20,8 +23,20 @@ public class EnemyAI : MonoBehaviour
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
 
-        seeker.StartPath(rb.position, target.position, OnPathComplete);
+        InvokeRepeating("UpdatePath", 0f, 0.5f);
+
     }
+
+    void UpdatePath()
+    {
+        if (seeker.IsDone())
+        {
+            seeker.StartPath(rb.position, target.position, OnPathComplete);
+        }
+
+    }
+
+
 
     void OnPathComplete(Path p)
     {
@@ -36,7 +51,7 @@ public class EnemyAI : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(path == null)
+        if (path == null)
         {
             return;
         }
@@ -52,7 +67,7 @@ public class EnemyAI : MonoBehaviour
             reachedEndOfPath = false;
         }
 
-        Vector2 direction = ((Vector2) path.vectorPath[currentWayPoint] - rb.position).normalized;
+        Vector2 direction = ((Vector2)path.vectorPath[currentWayPoint] - rb.position).normalized;
         Vector2 force = direction * speed * Time.deltaTime;
 
         rb.AddForce(force);
@@ -62,5 +77,14 @@ public class EnemyAI : MonoBehaviour
         {
             currentWayPoint++;
         }
+        if (force.x >= 0.01f)
+        {
+            enemyGraphic.localScale = new Vector3(-1f, 1f, 1f);
+        }
+        else if (force.x <= -0.01f)
+        {
+            enemyGraphic.localScale = new Vector3(1f, 1f, 1f);
+        }
     }
+
 }
