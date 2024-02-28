@@ -17,10 +17,11 @@ TagManager:
   - EnemyGlobin
   - 
   - Boss Layer
+  - Ethan
   - Water
   - UI
-  - UndergroundLayer
-  - Background
+  - GroundLayer
+  - Player
   - 
   - 
   - 
