@@ -5,10 +5,18 @@ TagManager:
   serializedVersion: 2
   tags:
   - Wall
+  - EnemyGlobin
+  - ground
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
+  - Obstacle
+  - Water
+  - UI
+  - EnemyGlobin
+  - 
+  - Boss Layer
   - Ethan
   - Water
   - UI
