@@ -7,6 +7,8 @@ public class PlayerMoving : MonoBehaviour
     private Rigidbody2D body;
     private SpriteRenderer mask;
     private float speed = 7;
+    public bool allowjump;
+
 
     private Collider2D collider2D;
     private float wallJumpCooldown;
@@ -15,9 +17,20 @@ public class PlayerMoving : MonoBehaviour
 
     private enum MovemenState { idle, running, jumping, hurt, attack1, attack2, attack3}; 
     private MovemenState state = MovemenState.idle;
+
+    public BloodBar BloodBar;
+    public float bloodpre;
+    public float maxblood;
     void Start()
     {
-        
+        bloodpre = maxblood;
+        BloodBar.UpdateBloodBar(bloodpre, maxblood);
+    }
+
+    private void OnMouseDown()
+    {
+        bloodpre -= 2;
+        BloodBar.UpdateBloodBar(bloodpre, maxblood);
     }
     public void Awake()
     {
@@ -33,13 +46,28 @@ public class PlayerMoving : MonoBehaviour
 
         body.velocity = new Vector2(direcX * 7f, body.velocity.y);
 
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetKeyDown(KeyCode.Space) && allowjump)
         {
-            body.velocity = new Vector2(body.velocity.x, 7f);
+            body.AddForce(Vector2.up *7f, ForceMode2D.Impulse);
         }
         
         UpdateAnimationStatde();
 
+    }
+    private void OnTriggerEnter2D(Collider2D collisionkhac)
+    {
+        if (collisionkhac.gameObject.tag == "ground")
+        {
+            allowjump = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "ground")
+        {
+            allowjump = false;
+        }
     }
     public void UpdateAnimationStatde() 
     {
