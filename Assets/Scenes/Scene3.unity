@@ -42895,9 +42895,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03cf72a2afbc20247bc62376622e3d54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  direcX: 0
-  direcY: 0
-  anim: {fileID: 0}
 --- !u!1001 &1610253791
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -43022,8 +43019,9 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: 8.424889, y: -7.497204}
-      - {x: -5.5372505, y: -7.5113277}
-      - {x: -5.39853, y: 14.338444}
+      - {x: -6.362095, y: -7.5113277}
+      - {x: -6.5287027, y: 1.8291326}
+      - {x: -6.5233154, y: 14.5634}
       - {x: 7.294733, y: 14.449794}
       - {x: 19.173153, y: 14.30516}
       - {x: 37.835297, y: 14.301322}
@@ -43146,7 +43144,7 @@ Transform:
   m_GameObject: {fileID: 1906781799}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.119935, y: 2.2795148, z: -10}
+  m_LocalPosition: {x: -0.29663658, y: 2.504475, z: -10}
   m_LocalScale: {x: 0.893775, y: 0.75, z: 0.75}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Wall
   - Ethan
+  - EnemyGlobin
+  - ground
   layers:
   - Default
   - TransparentFX
@@ -15,6 +17,17 @@ TagManager:
   - UI
   - Enemy
   - 
+  - Obstacle
+  - Water
+  - UI
+  - EnemyGlobin
+  - 
+  - Boss Layer
+  - Ethan
+  - Water
+  - UI
+  - GroundLayer
+  - Player
   - 
   - 
   - 
