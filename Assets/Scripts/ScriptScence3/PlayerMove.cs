@@ -15,12 +15,12 @@ public class PlayerMoving : MonoBehaviour
     public GameObject prefabToInstantiate;
     private Animator anim;
 
-    private enum MovemenState { idle, running, jumping, hurt, attack1, attack2, attack3}; 
+    private enum MovemenState { idle, running, jumping, hurt, attack1, attack2, attack3, death}; 
     private MovemenState state = MovemenState.idle;
 
     public BloodBar BloodBar;
-    public float bloodpre;
-    public float maxblood;
+    [SerializeReference]public float bloodpre;
+    public float maxblood = 10;
     void Start()
     {
         bloodpre = maxblood;
@@ -60,6 +60,13 @@ public class PlayerMoving : MonoBehaviour
         {
             allowjump = true;
         }
+        else if (collisionkhac.gameObject.CompareTag("EnemyGlobin"))
+        {
+            bloodpre -= 2;
+            BloodBar.UpdateBloodBar(bloodpre, maxblood);
+            state = MovemenState.hurt;
+            anim.SetInteger("state", (int)state);
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -68,6 +75,7 @@ public class PlayerMoving : MonoBehaviour
         {
             allowjump = false;
         }
+
     }
     public void UpdateAnimationStatde() 
     {
@@ -87,13 +95,17 @@ public class PlayerMoving : MonoBehaviour
             state = MovemenState.idle;
         }
 
-        if (body.velocity.y > .1f)
+        if (body.velocity.y > .1f && allowjump == true)
         {
             state = MovemenState.jumping;
         }
-        //else if ()
+        else if ( bloodpre <= 0)
+        {
+            state = MovemenState.death;
+        }
+        //if (body.velocity.y > .1f)
         //{
-        //    state = MovemenState.hurt;
+        //    state = MovemenState.death;
         //}
         else if (Input.GetKey(KeyCode.Alpha1))
         {
