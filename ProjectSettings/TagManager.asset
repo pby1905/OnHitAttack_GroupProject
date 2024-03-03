@@ -23,12 +23,16 @@ TagManager:
   - UI
   - EnemyGlobin
   - 
-  - Boss Layer
-  - Ethan
   - Water
-  - UI
-  - GroundLayer
-  - Player
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
   - 
   - 
   - 
@@ -60,12 +64,15 @@ TagManager:
   - name: Ground
     uniqueID: 2156115119
     locked: 0
+  - name: Background
+    uniqueID: 2526418389
+    locked: 0
+  - name: Wall
+    uniqueID: 4285764023
+    locked: 0
+  - name: Enemy
+    uniqueID: 399044967
   - name: Ethan
     uniqueID: 2226392425
     locked: 0
-  - name: Enemy
-    uniqueID: 107267361
-    locked: 0
-  - name: Tree
-    uniqueID: 272602383
-    locked: 0
+ 
