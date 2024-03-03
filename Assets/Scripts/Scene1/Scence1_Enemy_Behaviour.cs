@@ -4,37 +4,60 @@ using UnityEngine;
 
 public class Scence1_Enemy_Behaviour : MonoBehaviour
 {
-    
+    public Animator anim;
     public Transform rayCast;
     public LayerMask rayCastMask;
     public float rayCastLength;
     public float attackDistance; //Minimun distance for attack
     public float moveSpeed;
     public float timer; //Timer for cooldown beetween attacks
-
+    public Transform leftLimit;
+    public Transform rightLimit;
+    public int maxHealth = 100;
+    int currentHealth;
+    public Transform attackPoint;
+    public float attackRange = 0.35f;
+    public int attackDamage = 10;
+    public LayerMask EthanLayers;
 
     private RaycastHit2D hit;
-    private GameObject target;
-    private Animator anim;
+    private Transform target;
+    
     private float distance;  //Store the distance b/w enemy and palyer
     private bool attackModel;
     private bool inRange;  //check if player is in range
     private bool cooling; //check if Enemy is cooling after attack
     private float inTimer;
 
+
     private void Awake()
     {
+        SelectTarget();
         inTimer = timer; //Store the inital value of timer
         anim = GetComponent<Animator>();
+       
     }
 
 
+    void Start()
+    {
+        currentHealth = maxHealth;
+    }
     // Update is called once per frame
     void Update()
     {
+        if(!attackModel)
+        {
+            Move();
+        }
+
+        if(!InsideOfLimits() && !inRange && !anim.GetCurrentAnimatorStateInfo(0).IsName("S1_Enemy_Attack1"))
+        {
+            SelectTarget();
+        }
         if (inRange)
         {
-            hit = Physics2D.Raycast(rayCast.position, Vector2.left, rayCastLength, rayCastMask);
+            hit = Physics2D.Raycast(rayCast.position, transform.right, rayCastLength, rayCastMask);
             RayCastDebugger();
         }
         //When player is deteced
@@ -48,7 +71,7 @@ public class Scence1_Enemy_Behaviour : MonoBehaviour
         }
         if(inRange == false)
         {
-            anim.SetBool("CanWalk", false);
+
             StopAttack();
         }
     }
@@ -59,8 +82,9 @@ public class Scence1_Enemy_Behaviour : MonoBehaviour
     {
         if(trig.gameObject.tag == "Ethan")
         {
-            target = trig.gameObject;
+            target = trig.transform;
             inRange = true;
+            Flip();
         }
     }
 
@@ -68,20 +92,19 @@ public class Scence1_Enemy_Behaviour : MonoBehaviour
     {
         if(distance > attackDistance)
         {
-            Debug.DrawRay(rayCast.position, Vector2.left * rayCastLength, Color.green);
+            Debug.DrawRay(rayCast.position, transform.right * rayCastLength, Color.green);
         }
         else if(attackDistance > distance)
         {
-            Debug.DrawRay(rayCast.position, Vector2.left * rayCastLength, Color.green);
+            Debug.DrawRay(rayCast.position, transform.right * rayCastLength, Color.green);
         }
     }
 
     void EnemyLogic()
     {
-        distance = Vector2.Distance(transform.position, target.transform.position);
+        distance = Vector2.Distance(transform.position, target.position);
         if(distance > attackDistance) 
         {
-            Move();
             StopAttack();
         }
         else if( attackDistance >= distance && cooling == false )
@@ -98,9 +121,9 @@ public class Scence1_Enemy_Behaviour : MonoBehaviour
     void Move()
     {
         anim.SetBool("CanWalk", true);
-        if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Scene1_Enemy_Attack"))
+        if (!anim.GetCurrentAnimatorStateInfo(0).IsName("S1_Enemy_Attack1"))
         {
-            Vector2 targetPosition = new Vector2(target.transform.position.x, transform.position.y);
+            Vector2 targetPosition = new Vector2(target.position.x, transform.position.y);
             transform.position = Vector2.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
         }
     }
@@ -111,6 +134,12 @@ public class Scence1_Enemy_Behaviour : MonoBehaviour
         attackModel = true;
         anim.SetBool("CanWalk", false);
         anim.SetBool("Attack", true);
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, EthanLayers);
+        foreach (Collider2D ethan in hitEnemies)
+        {
+            ethan.GetComponent<Scence1_MovementEthan>().TakeDamage(attackDamage);
+            Debug.Log("Hit: " + ethan.name);
+        }
     }
 
     void StopAttack()
@@ -133,6 +162,70 @@ public class Scence1_Enemy_Behaviour : MonoBehaviour
     public void TriggerCooling()
     {
         cooling = true;
+    }
+
+    private bool InsideOfLimits()
+    {
+        return transform.position.x > leftLimit.position.x && transform.position.x < rightLimit.position.x;
+    }
+
+    private void SelectTarget()
+    {
+        float distanceToLeft = Vector3.Distance(transform.position, leftLimit.position);
+        float distanceRight = Vector3.Distance(transform.position, rightLimit.position);
+        if(distanceToLeft > distanceRight)
+        {
+            target = leftLimit;
+        }
+        else
+        {
+            target = rightLimit;
+        }
+        Flip();
+    }
+
+    private void Flip()
+    {
+        Vector3 rotation = transform.eulerAngles;
+        if(transform.position.x > target.position.x)
+        {
+            rotation.y = 180;
+        }
+        else
+        {
+            rotation.y = 0;
+        }
+
+        transform.eulerAngles = rotation;
+    }
+
+    public void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+        anim.SetTrigger("Hurt");
+
+        if(currentHealth <= 0)
+        {
+            Debug.Log("Enemy died!");
+            Die();
+        }
+    }
+
+    void Die()
+    {
+        anim.SetBool("Death", true);
+        this.enabled = false;
+        GetComponent<Collider2D>().enabled = false;
+        this.enabled = false;
+        
+
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        if (attackPoint == null)
+            return;
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
 }
 
