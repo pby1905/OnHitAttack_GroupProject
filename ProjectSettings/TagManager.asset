@@ -3,34 +3,28 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-<<<<<<< HEAD
-  tags: []
-=======
   tags:
   - Wall
   - Ethan
   - EnemyGlobin
   - ground
->>>>>>> 9ddf3c594d20cffca4263d0d750c52bb00e60b36
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-<<<<<<< HEAD
-=======
   - Ethan
   - Water
   - UI
   - Enemy
+  - Ground
   - 
   - Obstacle
   - Water
   - UI
   - EnemyGlobin
->>>>>>> 9ddf3c594d20cffca4263d0d750c52bb00e60b36
   - 
   - Water
-  - UI
+  - 
   - 
   - 
   - 
@@ -67,7 +61,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-<<<<<<< HEAD
+  - name: Ground
+    uniqueID: 2156115119
+    locked: 0
   - name: Background
     uniqueID: 2526418389
     locked: 0
@@ -76,11 +72,7 @@ TagManager:
     locked: 0
   - name: Enemy
     uniqueID: 399044967
-=======
   - name: Ethan
     uniqueID: 2226392425
     locked: 0
-  - name: Enemy
-    uniqueID: 107267361
->>>>>>> 9ddf3c594d20cffca4263d0d750c52bb00e60b36
-    locked: 0
+ 
