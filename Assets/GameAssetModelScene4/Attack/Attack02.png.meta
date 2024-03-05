@@ -1,22 +1,16 @@
 fileFormatVersion: 2
-guid: 4e6b2567f998697488aa7aa6237a6d0c
+guid: 452af9e2c788d9f42821dea90b4c5da3
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2048800907179887802
-    second: Hurt_0
+      213: -7341593022798921653
+    second: Attack02_0
   - first:
-      213: 490842205202310979
-    second: Hurt_1
+      213: -9022831148625993860
+    second: Attack02_1
   - first:
-      213: -3720053754089064719
-    second: Hurt_2
-  - first:
-      213: 5649970053243570431
-    second: Hurt_3
-  - first:
-      213: -371187646486735994
-    second: Hurt_4
+      213: 2649231413701057909
+    second: Attack02_2
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -164,106 +158,64 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Hurt_0
+      name: Attack02_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 9
-        width: 150
-        height: 71
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        y: 19
+        width: 120
+        height: 81
+      alignment: 9
+      pivot: {x: 0.4675649, y: 0.4334663}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6437b001e623193e0800000000000000
-      internalID: -2048800907179887802
+      spriteID: b40859e0b0c6d1a90800000000000000
+      internalID: -7341593022798921653
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hurt_1
+      name: Attack02_1
       rect:
         serializedVersion: 2
-        x: 150
-        y: 9
-        width: 150
-        height: 71
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 120
+        y: 19
+        width: 120
+        height: 81
+      alignment: 9
+      pivot: {x: 0.4675649, y: 0.4334663}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3476ad19262dfc600800000000000000
-      internalID: 490842205202310979
+      spriteID: c7f51d510e678c280800000000000000
+      internalID: -9022831148625993860
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hurt_2
+      name: Attack02_2
       rect:
         serializedVersion: 2
-        x: 300
-        y: 9
-        width: 150
-        height: 71
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 240
+        y: 19
+        width: 120
+        height: 81
+      alignment: 9
+      pivot: {x: 0.4675649, y: 0.4334663}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1f6b92202d6bf5cc0800000000000000
-      internalID: -3720053754089064719
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Hurt_3
-      rect:
-        serializedVersion: 2
-        x: 450
-        y: 9
-        width: 150
-        height: 71
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ff88d2f14d9b86e40800000000000000
-      internalID: 5649970053243570431
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Hurt_4
-      rect:
-        serializedVersion: 2
-        x: 600
-        y: 9
-        width: 150
-        height: 71
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 683152a5dc649daf0800000000000000
-      internalID: -371187646486735994
+      spriteID: 57d157d3fe5f3c420800000000000000
+      internalID: 2649231413701057909
       vertices: []
       indices: 
       edges: []
@@ -279,11 +231,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Hurt_0: -2048800907179887802
-      Hurt_1: 490842205202310979
-      Hurt_2: -3720053754089064719
-      Hurt_3: 5649970053243570431
-      Hurt_4: -371187646486735994
+      Attack02_0: -7341593022798921653
+      Attack02_1: -9022831148625993860
+      Attack02_2: 2649231413701057909
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

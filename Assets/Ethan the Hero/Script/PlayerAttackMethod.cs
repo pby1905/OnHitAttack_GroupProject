@@ -13,6 +13,12 @@ namespace EthanTheHero
 		private Animator myAnim;
 		private Rigidbody2D myBody;
 
+		//my editing
+		public Transform attackPoint;
+		public float attackRange = 0.5f;
+		public LayerMask enemyLayers;
+
+
 		[Header("Basic Attack")]
 		public float basicAttack01Power = 0.5f;
 		public float basicAttack02Power = 0.5f;
@@ -44,18 +50,43 @@ namespace EthanTheHero
 
 
 			BasicAttackCombo();
+			
 
+        }
 
+		void AttackHitBox()
+		{
+			//when player attacking
+			myAnim.SetTrigger("Attack01");
+			/*myAnim.SetTrigger("Attack02");
+			myAnim.SetTrigger("Attack03");*/
+
+			Collider2D[] hitEnermies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
+			foreach(Collider2D c in hitEnermies)
+			{
+				Debug.Log("We hit" + c.name);
+			}
 		}
 
-		void FixedUpdate()
+        private void OnDrawGizmosSelected()
+        {
+			if (attackPoint == null)
+				return;
+			Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+        }
+
+
+
+
+        void FixedUpdate()
 		{
 			if (playerMv.isDashing || playerMv.wallJump || playerMv.wallSliding)
 				return;
 
 			BasicAttackMethod();
+			
 
-		}
+        }
 
 		#region BASIC ATTACK
 
