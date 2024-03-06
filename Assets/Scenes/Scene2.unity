@@ -323,8 +323,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1795238261
-  m_SortingLayer: 6
-  m_SortingOrder: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: -4795363162621231457, guid: 6d7cd4f7505dc674c891ca8946cfd98b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -22403,13 +22403,8 @@ TilemapRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-<<<<<<< HEAD
-  m_SortingLayerID: -9203273
-  m_SortingLayer: 3
-=======
   m_SortingLayerID: 1139205513
   m_SortingLayer: 0
->>>>>>> 10c68ce489333e4e0586296df0af57593b238ca6
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 3.375, y: 2.5625, z: 0}
@@ -25506,11 +25501,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1831487879}
-<<<<<<< HEAD
-  - component: {fileID: 1831487882}
-=======
+
   - component: {fileID: 1831487881}
->>>>>>> 10c68ce489333e4e0586296df0af57593b238ca6
   - component: {fileID: 1831487878}
   - component: {fileID: 1831487877}
   - component: {fileID: 1831487876}
@@ -25634,9 +25626,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
 
   m_SortingLayerID: 1306060155
-  m_SortingLayer: 3
-
-  m_SortingOrder: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 4723107735738678597, guid: 9645111ec024edb4a8af3fe812f274a6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -25723,7 +25714,8 @@ MonoBehaviour:
   enemyLayers:
     serializedVersion: 2
 
-    m_Bits: 512
+    m_Bits: 0
+ 
 --- !u!1 &2014710424
 GameObject:
   m_ObjectHideFlags: 0
