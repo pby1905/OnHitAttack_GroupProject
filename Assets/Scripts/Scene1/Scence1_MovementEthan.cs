@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Xml.Serialization;
 using UnityEngine;
+using UnityEngine.Timeline;
 using static UnityEngine.RuleTile.TilingRuleOutput;
 using Transform = UnityEngine.Transform;
 
@@ -35,6 +36,7 @@ public class Scence1_MovementEthan : MonoBehaviour
     bool facingRight = true;
     //bool crouchPressed;
 
+  
     // Start is called before the first frame update
 
     private void Awake()
@@ -167,7 +169,7 @@ public class Scence1_MovementEthan : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            Debug.Log("Enemy died!");
+            Debug.Log("Player died!");
             Die();
         }
     }
