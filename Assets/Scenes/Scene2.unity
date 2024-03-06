@@ -21908,7 +21908,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -9203273
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 3.375, y: 2.5625, z: 0}
@@ -25005,7 +25005,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1831487879}
-  - component: {fileID: 1831487880}
+  - component: {fileID: 1831487882}
   - component: {fileID: 1831487878}
   - component: {fileID: 1831487877}
   - component: {fileID: 1831487876}
@@ -25080,7 +25080,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.6666667, y: 2.3666666}
+    oldSize: {x: 2, y: 1.775}
     newSize: {x: 2.6666667, y: 2.3666666}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -25128,7 +25128,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 399044967
-  m_SortingLayer: 3
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 4723107735738678597, guid: 9645111ec024edb4a8af3fe812f274a6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -25156,20 +25156,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1831487880
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1831487875}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 264ee0fb1454e61429716c95fe22e258, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 5
-  moveInput: {x: 0, y: 0, z: 0}
 --- !u!95 &1831487881
 Animator:
   serializedVersion: 5
@@ -25191,6 +25177,34 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1831487882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1831487875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 264ee0fb1454e61429716c95fe22e258, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 0}
+  standingCollider: {fileID: 0}
+  foreCheckCollider: {fileID: 0}
+  foreLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  isGrounded: 0
+  speed: 300
+  jumpPower: 150
+  maxHealth: 100
+  attackPoint: {fileID: 0}
+  attackRange: 0.35
+  attackDamage: 30
+  enemyLayers:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
