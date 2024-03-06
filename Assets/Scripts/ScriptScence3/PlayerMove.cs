@@ -7,17 +7,30 @@ public class PlayerMoving : MonoBehaviour
     private Rigidbody2D body;
     private SpriteRenderer mask;
     private float speed = 7;
+    public bool allowjump;
+
 
     private Collider2D collider2D;
     private float wallJumpCooldown;
     public GameObject prefabToInstantiate;
     private Animator anim;
 
-    private enum MovemenState { idle, running, jumping, hurt, attack1, attack2, attack3}; 
+    private enum MovemenState { idle, running, jumping, hurt, attack1, attack2, attack3, death}; 
     private MovemenState state = MovemenState.idle;
+
+    public BloodBar BloodBar;
+    [SerializeReference]public float bloodpre;
+    public float maxblood = 10;
     void Start()
     {
-        
+        bloodpre = maxblood;
+        BloodBar.UpdateBloodBar(bloodpre, maxblood);
+    }
+
+    private void OnMouseDown()
+    {
+        bloodpre -= 2;
+        BloodBar.UpdateBloodBar(bloodpre, maxblood);
     }
     public void Awake()
     {
@@ -33,12 +46,35 @@ public class PlayerMoving : MonoBehaviour
 
         body.velocity = new Vector2(direcX * 7f, body.velocity.y);
 
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetKeyDown(KeyCode.Space) && allowjump)
         {
-            body.velocity = new Vector2(body.velocity.x, 7f);
+            body.AddForce(Vector2.up *7f, ForceMode2D.Impulse);
         }
         
         UpdateAnimationStatde();
+
+    }
+    private void OnTriggerEnter2D(Collider2D collisionkhac)
+    {
+        if (collisionkhac.gameObject.tag == "ground")
+        {
+            allowjump = true;
+        }
+        else if (collisionkhac.gameObject.CompareTag("EnemyGlobin"))
+        {
+            bloodpre -= 2;
+            BloodBar.UpdateBloodBar(bloodpre, maxblood);
+            state = MovemenState.hurt;
+            anim.SetInteger("state", (int)state);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "ground")
+        {
+            allowjump = false;
+        }
 
     }
     public void UpdateAnimationStatde() 
@@ -59,13 +95,17 @@ public class PlayerMoving : MonoBehaviour
             state = MovemenState.idle;
         }
 
-        if (body.velocity.y > .1f)
+        if (body.velocity.y > .1f && allowjump == true)
         {
             state = MovemenState.jumping;
         }
-        //else if ()
+        else if ( bloodpre <= 0)
+        {
+            state = MovemenState.death;
+        }
+        //if (body.velocity.y > .1f)
         //{
-        //    state = MovemenState.hurt;
+        //    state = MovemenState.death;
         //}
         else if (Input.GetKey(KeyCode.Alpha1))
         {
