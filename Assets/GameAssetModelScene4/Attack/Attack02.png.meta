@@ -1,10 +1,16 @@
 fileFormatVersion: 2
-guid: 30350f1c7b7f81940856bd06d90b1558
+guid: 452af9e2c788d9f42821dea90b4c5da3
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3528185928632461864
-    second: WallJump_0
+      213: -7341593022798921653
+    second: Attack02_0
+  - first:
+      213: -9022831148625993860
+    second: Attack02_1
+  - first:
+      213: 2649231413701057909
+    second: Attack02_2
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -51,7 +57,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 40
+  spritePixelsToUnits: 30
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -152,22 +158,64 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: WallJump_0
+      name: Attack02_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 80
-        height: 80
+        y: 19
+        width: 120
+        height: 81
       alignment: 9
-      pivot: {x: 0.5564445, y: 0.5643467}
+      pivot: {x: 0.4675649, y: 0.4334663}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 82a6ba1b862a6f030800000000000000
-      internalID: 3528185928632461864
+      spriteID: b40859e0b0c6d1a90800000000000000
+      internalID: -7341593022798921653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack02_1
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 19
+        width: 120
+        height: 81
+      alignment: 9
+      pivot: {x: 0.4675649, y: 0.4334663}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7f51d510e678c280800000000000000
+      internalID: -9022831148625993860
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack02_2
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 19
+        width: 120
+        height: 81
+      alignment: 9
+      pivot: {x: 0.4675649, y: 0.4334663}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57d157d3fe5f3c420800000000000000
+      internalID: 2649231413701057909
       vertices: []
       indices: 
       edges: []
@@ -183,7 +231,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      WallJump_0: 3528185928632461864
+      Attack02_0: -7341593022798921653
+      Attack02_1: -9022831148625993860
+      Attack02_2: 2649231413701057909
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

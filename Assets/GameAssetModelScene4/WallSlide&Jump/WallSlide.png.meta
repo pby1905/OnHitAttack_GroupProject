@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 30350f1c7b7f81940856bd06d90b1558
+guid: 36ef66b22e78e2b41bf5ac995facd3a1
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3528185928632461864
-    second: WallJump_0
+      213: 807139013275419232
+    second: WallSlide_0
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 40
+  spritePixelsToUnits: 64
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -152,7 +152,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: WallJump_0
+      name: WallSlide_0
       rect:
         serializedVersion: 2
         x: 0
@@ -160,14 +160,14 @@ TextureImporter:
         width: 80
         height: 80
       alignment: 9
-      pivot: {x: 0.5564445, y: 0.5643467}
+      pivot: {x: 0.7149042, y: 0.4866129}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 82a6ba1b862a6f030800000000000000
-      internalID: 3528185928632461864
+      spriteID: 06204aaf7a8833b00800000000000000
+      internalID: 807139013275419232
       vertices: []
       indices: 
       edges: []
@@ -183,7 +183,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      WallJump_0: 3528185928632461864
+      WallSlide_0: 807139013275419232
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
