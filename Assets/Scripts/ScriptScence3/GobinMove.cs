@@ -15,6 +15,7 @@ public class GobinMove : MonoBehaviour
     public float detectionRange = 5f;
     public float attackRange = 1.0f;
     private bool playerDetected = false;
+    private bool playerholder = false;
 
     public GameObject enemyToActivate;
     void Start()
@@ -63,6 +64,15 @@ public class GobinMove : MonoBehaviour
     {
         if (other.CompareTag("Player")) {
             enemyToActivate.SetActive(true);
+            playerholder = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            playerholder = false;
         }
     }
 
@@ -76,6 +86,13 @@ public class GobinMove : MonoBehaviour
         {
             state = Movementstate.run;
             mask.flipX = true;
+        }
+        if(playerholder == true)
+        {
+            state = Movementstate.attack1;
+        }else if (playerholder == false)
+        {
+            state = Movementstate.idle;
         }
         anim.SetInteger("state", (int)state);
     }
