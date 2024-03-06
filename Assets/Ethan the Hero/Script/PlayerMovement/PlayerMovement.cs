@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
 
@@ -191,10 +192,10 @@ namespace EthanTheHero
 			yield return new WaitForSeconds(data.WallJumpTimeInSecond);
 			wallJump = false;
 		}
-		#endregion
+        #endregion
 
-		#region OTHER
-		private void CheckDirectionToFace(bool isMovingRight)
+        #region OTHER
+        private void CheckDirectionToFace(bool isMovingRight)
 		{
 			Vector3 tem = transform.localScale;
 			if (!isMovingRight)

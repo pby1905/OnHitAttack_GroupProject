@@ -5,9 +5,6 @@ TagManager:
   serializedVersion: 2
   tags:
   - Wall
-  - Ethan
-  - EnemyGlobin
-  - ground
   layers:
   - Default
   - TransparentFX
@@ -15,25 +12,9 @@ TagManager:
   - Ethan
   - Water
   - UI
-  - Enemy
-  - Ground
-  - 
-  - Obstacle
-  - Water
-  - UI
-  - EnemyGlobin
-  - 
-  - Water
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - GroundLayer
+  - Player
+  - Enermy
   - 
   - 
   - 
@@ -60,3 +41,4 @@ TagManager:
   - name: Enemy
     uniqueID: 399044967
     locked: 0
+
