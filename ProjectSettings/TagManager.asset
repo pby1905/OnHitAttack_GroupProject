@@ -22,23 +22,23 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
   m_SortingLayers:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Ground
+    uniqueID: 2156115119
+    locked: 0
+  - name: Background
+    uniqueID: 2526418389
+    locked: 0
+  - name: Wall
+    uniqueID: 4285764023
+    locked: 0
+  - name: Ethan
+    uniqueID: 2226392425
+    locked: 0
+  - name: Enemy
+    uniqueID: 399044967
+    locked: 0
+
