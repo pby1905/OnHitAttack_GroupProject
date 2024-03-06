@@ -17,9 +17,9 @@ namespace EthanTheHero
 		private Animator myAnim;
 		private Rigidbody2D myBody;
 
-		//my editing
-		public Transform attackPoint;
-		public float attackRange = 0.5f;
+		
+		public Transform attackPointing;
+		public float attackRanges = 0.5f;
 		public LayerMask enemyLayers;
 
 
@@ -62,10 +62,10 @@ namespace EthanTheHero
 		{
 			//when player attacking
 			myAnim.SetTrigger("Attack01");
-			/*myAnim.SetTrigger("Attack02");
-			myAnim.SetTrigger("Attack03");*/
+			myAnim.SetTrigger("Attack02");
+			myAnim.SetTrigger("Attack03");
 
-			Collider2D[] hitEnermies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
+			Collider2D[] hitEnermies = Physics2D.OverlapCircleAll(attackPointing.position, attackRanges, enemyLayers);
 			foreach(Collider2D c in hitEnermies)
 			{
 				Debug.Log("We hit" + c.name);
@@ -76,7 +76,7 @@ namespace EthanTheHero
         {
 			if (attackPoint == null)
 				return;
-			Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+			Gizmos.DrawWireSphere(attackPointing.position, attackRange);
         }
 
 
@@ -92,10 +92,10 @@ namespace EthanTheHero
 
         }
 
-        private void OnDrawGizmos()
+        /*private void OnDrawGizmos()
         {
 			Gizmos.DrawWireSphere(attackPoint.transform.position, attackRange);
-        }
+        }*/
 
         #region BASIC ATTACK
 
