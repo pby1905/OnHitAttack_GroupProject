@@ -24,9 +24,14 @@ public class PlayerHealthInteraction : MonoBehaviour
             Console.WriteLine("Hitted");
         }
     }
-    void TakeDamage(int damage)
+    public void TakeDamage(int damage)
     {
         currentHealth -= damage;
         healthbar.SetHealth(currentHealth);
+
+        if(currentHealth < 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }
