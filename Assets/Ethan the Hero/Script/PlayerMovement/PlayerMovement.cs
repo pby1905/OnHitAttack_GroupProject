@@ -147,7 +147,6 @@ namespace EthanTheHero
 		#region JUMP
 		private void jump()
 		{
-
 			if (grounded)
 				isJumping = false;
 
