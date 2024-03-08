@@ -15,8 +15,8 @@ public class Monster_behavior : MonoBehaviour
     public Transform rightLimit;
     public int maxHealth = 100;
     int currentHealth;
-    public Transform attackPoint;
-    public float attackRange = 0.35f;
+    //public Transform attackPoint;
+    //public float attackRange = 0.35f;
     public int attackDamage = 10;
     public LayerMask EthanLayers;
 
@@ -28,14 +28,14 @@ public class Monster_behavior : MonoBehaviour
     private bool inRange;  //check if player is in range
     private bool cooling; //check if Enemy is cooling after attack
     private float inTimer;
-
+    
 
     private void Awake()
     {
         SelectTarget();
         inTimer = timer; //Store the inital value of timer
         anim = GetComponent<Animator>();
-
+        
     }
 
 
@@ -80,11 +80,9 @@ public class Monster_behavior : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D trig)
     {
-        Debug.Log("trigger:" + trig.gameObject.tag == "Enemy");
-        if (trig.gameObject.tag == "Enemy")
+        if (trig.gameObject.tag == "Ethan")
         {
             target = trig.transform;
-            Debug.Log("target:" + target);
             inRange = true;
             Flip();
         }
@@ -132,16 +130,17 @@ public class Monster_behavior : MonoBehaviour
 
     void Attack()
     {
+       
         timer = inTimer;
         attackModel = true;
         anim.SetBool("CanWalk", false);
         anim.SetBool("Attack", true);
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, EthanLayers);
-        foreach (Collider2D ethan in hitEnemies)
-        {
-            ethan.GetComponent<Scence1_MovementEthan>().TakeDamage(attackDamage);
-            Debug.Log("Hit: " + ethan.name);
-        }
+        //Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, EthanLayers);
+        //foreach (Collider2D ethan in hitEnemies)
+        //{
+        //    ethan.GetComponent<Scence1_MovementEthan>().TakeDamage(attackDamage);
+        //    Debug.Log("Hit: " + ethan.name);
+        //}
     }
 
     void StopAttack()
@@ -223,12 +222,12 @@ public class Monster_behavior : MonoBehaviour
 
     }
 
-    void OnDrawGizmosSelected()
-    {
-        if (attackPoint == null)
-            return;
-        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
-    }
+    //void OnDrawGizmosSelected()
+    //{
+    //    if (attackPoint == null)
+    //        return;
+    //    Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+    //}
 }
 
 

@@ -5,6 +5,12 @@ TagManager:
   serializedVersion: 2
   tags:
   - Wall
+  - ground
+  - Ethan
+  - Monster
+  - Enemy
+  - Enemy2
+  - Audio
   layers:
   - Default
   - TransparentFX
@@ -15,6 +21,22 @@ TagManager:
   - GroundLayer
   - Player
   - Enermy
+  - Enemy
+  - Wall
+  - Monster
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
   - 
   - 
   - 
@@ -41,4 +63,6 @@ TagManager:
   - name: Enemy
     uniqueID: 399044967
     locked: 0
-
+  - name: Monster
+    uniqueID: 302786249
+    locked: 0
