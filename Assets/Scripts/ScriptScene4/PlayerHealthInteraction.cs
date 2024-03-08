@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class PlayerHealthInteraction : MonoBehaviour
@@ -9,6 +10,8 @@ public class PlayerHealthInteraction : MonoBehaviour
     public int currentHealth;
 
     public PlayerHealth healthbar;
+
+   
 
     void Start()
     {
@@ -23,10 +26,18 @@ public class PlayerHealthInteraction : MonoBehaviour
             TakeDamage(20);
             Console.WriteLine("Hitted");
         }
+        
+
+
     }
-    void TakeDamage(int damage)
+    public void TakeDamage(int damage)
     {
         currentHealth -= damage;
         healthbar.SetHealth(currentHealth);
+
+        if(currentHealth < 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }

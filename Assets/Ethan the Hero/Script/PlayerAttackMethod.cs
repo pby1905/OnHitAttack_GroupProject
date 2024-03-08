@@ -18,9 +18,7 @@ namespace EthanTheHero
 		private Rigidbody2D myBody;
 
 		
-		/*public Transform attackPointing;
-		public float attackRanges = 0.5f;
-		public LayerMask enemyLayers;*/
+		
 
 
 		[Header("Basic Attack")]
@@ -51,38 +49,10 @@ namespace EthanTheHero
 		{
 			if (playerMv.isDashing || playerMv.wallJump || playerMv.wallSliding)
 				return;
-
-
 			BasicAttackCombo();
-			
-
         }
 
-		/*void AttackHitBox()
-		{
-			//when player attacking
-			myAnim.SetTrigger("Attack01");
-			myAnim.SetTrigger("Attack02");
-			myAnim.SetTrigger("Attack03");
-
-			Collider2D[] hitEnermies = Physics2D.OverlapCircleAll(attackPointing.position, attackRanges, enemyLayers);
-			foreach(Collider2D c in hitEnermies)
-			{
-				Debug.Log("We hit" + c.name);
-			}
-		}*/
-
-        /*private void OnDrawGizmosSelected()
-        {
-			if (attackPoint == null)
-				return;
-			Gizmos.DrawWireSphere(attackPointing.position, attackRange);
-        }*/
-
-
-
-
-        void FixedUpdate()
+		void FixedUpdate()
 		{
 			if (playerMv.isDashing || playerMv.wallJump || playerMv.wallSliding)
 				return;
@@ -92,22 +62,18 @@ namespace EthanTheHero
 
         }
 
-        /*private void OnDrawGizmos()
-        {
-			Gizmos.DrawWireSphere(attackPoint.transform.position, attackRange);
-        }*/
 
-        #region BASIC ATTACK
+		#region BASIC ATTACK
 
-        /*public void attack()
+		public void attack()
 		{
 			Collider2D[] enemy = Physics2D.OverlapCircleAll(attackPoint.transform.position, attackRange, enemyLayer);
-			foreach(Collider2D enemeGameObject in enemy)
+			foreach (Collider2D enemeGameObject in enemy)
 			{
 				Debug.Log("Hit enemy");
 				enemeGameObject.GetComponent<Scence1_Enemy_Behaviour>().TakeDamage(attackDamage);
 			}
-		}*/
+		}
 
 		private void BasicAttackCombo()
 		{
