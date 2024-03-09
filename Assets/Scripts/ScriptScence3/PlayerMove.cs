@@ -29,7 +29,7 @@ public class PlayerMoving : MonoBehaviour
 
     private void OnMouseDown()
     {
-        bloodpre -= 2;
+        bloodpre -= 1;
         BloodBar.UpdateBloodBar(bloodpre, maxblood);
     }
     public void Awake()
@@ -60,13 +60,14 @@ public class PlayerMoving : MonoBehaviour
         {
             allowjump = true;
         }
-        else if (collisionkhac.gameObject.CompareTag("EnemyGlobin"))
+        else if (collisionkhac.gameObject.CompareTag("hitBox"))
         {
-            bloodpre -= 2;
+            bloodpre -= 1;
             BloodBar.UpdateBloodBar(bloodpre, maxblood);
             state = MovemenState.hurt;
             anim.SetInteger("state", (int)state);
         }
+       
     }
 
     private void OnTriggerExit2D(Collider2D collision)

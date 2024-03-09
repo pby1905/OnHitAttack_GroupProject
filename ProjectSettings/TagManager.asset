@@ -9,6 +9,7 @@ TagManager:
   - ground
   - Monster
   - Enemy
+  - hitBox
   layers:
   - Default
   - TransparentFX
