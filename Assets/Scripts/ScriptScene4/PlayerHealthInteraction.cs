@@ -19,17 +19,14 @@ public class PlayerHealthInteraction : MonoBehaviour
         healthbar.SetHealth(maxHealth);
     }
 
-    void Update()
+    /*void Update()
     {
         if (Input.GetKeyDown(KeyCode.H))
         {
             TakeDamage(20);
             Console.WriteLine("Hitted");
         }
-        
-
-
-    }
+    }*/
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
