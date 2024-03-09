@@ -64,7 +64,7 @@ public class Scence1_MovementEthan : MonoBehaviour
             jump = false;
 
         
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetMouseButtonDown(0))
         {
             Attack();
         }

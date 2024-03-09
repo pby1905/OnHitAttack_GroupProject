@@ -62,7 +62,7 @@ public class Scence2_MovementEthan : MonoBehaviour
             jump = false;
 
         //if we press Crouch button enable jump
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetMouseButtonDown(0))
         {
             Attack();
         }
