@@ -9,6 +9,8 @@ TagManager:
   - Ethan
   - Door
   - Shrooms
+  - Audio
+  - Enemy
   layers:
   - Default
   - TransparentFX
