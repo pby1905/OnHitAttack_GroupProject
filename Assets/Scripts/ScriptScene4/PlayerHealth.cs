@@ -8,6 +8,7 @@ public class PlayerHealth : MonoBehaviour
     public Slider slider;
     public Gradient gradient;
     public Image fill;
+    /*public float health = 50;*/
 
     public void SetMaxHealth(int health)
     {
@@ -16,6 +17,18 @@ public class PlayerHealth : MonoBehaviour
 
         fill.color = gradient.Evaluate(1f);
     }
+
+    /*public void SavePlayer()
+    {
+        SaveSystem.SavePlayer(this);
+    }
+    public void LoadPlayer()
+    {
+        DataPlayer data = SaveSystem.LoadPlayer();
+
+        health = data.health;
+    }*/
+
 
 
     public void SetHealth(int health)
