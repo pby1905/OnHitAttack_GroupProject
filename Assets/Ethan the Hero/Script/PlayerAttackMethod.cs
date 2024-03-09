@@ -17,6 +17,10 @@ namespace EthanTheHero
 		private Animator myAnim;
 		private Rigidbody2D myBody;
 
+		
+		
+
+
 		[Header("Basic Attack")]
 		public float basicAttack01Power = 0.5f;
 		public float basicAttack02Power = 0.5f;
@@ -45,12 +49,8 @@ namespace EthanTheHero
 		{
 			if (playerMv.isDashing || playerMv.wallJump || playerMv.wallSliding)
 				return;
-
-
 			BasicAttackCombo();
-
-
-		}
+        }
 
 		void FixedUpdate()
 		{
@@ -58,20 +58,17 @@ namespace EthanTheHero
 				return;
 
 			BasicAttackMethod();
+			
 
-		}
-
-        private void OnDrawGizmos()
-        {
-			Gizmos.DrawWireSphere(attackPoint.transform.position, attackRange);
         }
 
-        #region BASIC ATTACK
 
-        public void attack()
+		#region BASIC ATTACK
+
+		public void attack()
 		{
 			Collider2D[] enemy = Physics2D.OverlapCircleAll(attackPoint.transform.position, attackRange, enemyLayer);
-			foreach(Collider2D enemeGameObject in enemy)
+			foreach (Collider2D enemeGameObject in enemy)
 			{
 				Debug.Log("Hit enemy");
 				enemeGameObject.GetComponent<Scence1_Enemy_Behaviour>().TakeDamage(attackDamage);
@@ -150,30 +147,30 @@ namespace EthanTheHero
 			if (transform.localScale.x == 1)
 			{
 				if (myAnim.GetCurrentAnimatorStateInfo(0).IsName("Attack01"))
-					//myBody.velocity = new Vector2(basicAttack01Power, myBody.velocity.y);
-				    attack();
+					myBody.velocity = new Vector2(basicAttack01Power, myBody.velocity.y);
+				    
 
 				if (myAnim.GetCurrentAnimatorStateInfo(0).IsName("Attack02"))
-					//myBody.velocity = new Vector2(basicAttack02Power, myBody.velocity.y);
-                    attack();
+					myBody.velocity = new Vector2(basicAttack02Power, myBody.velocity.y);
+                    
 
                 if (myAnim.GetCurrentAnimatorStateInfo(0).IsName("Attack03"))
-					//myBody.velocity = new Vector2(basicAttack03Power, myBody.velocity.y);
-                    attack();
+					myBody.velocity = new Vector2(basicAttack03Power, myBody.velocity.y);
+                   
             }
 			else
 			{
 				if (myAnim.GetCurrentAnimatorStateInfo(0).IsName("Attack01"))
-					//myBody.velocity = new Vector2(-basicAttack01Power, myBody.velocity.y);
-                    attack();
+					myBody.velocity = new Vector2(-basicAttack01Power, myBody.velocity.y);
+                    
 
                 if (myAnim.GetCurrentAnimatorStateInfo(0).IsName("Attack02"))
-					//myBody.velocity = new Vector2(-basicAttack02Power, myBody.velocity.y);
-                    attack();
+					myBody.velocity = new Vector2(-basicAttack02Power, myBody.velocity.y);
+                    
 
                 if (myAnim.GetCurrentAnimatorStateInfo(0).IsName("Attack03"))
-					//myBody.velocity = new Vector2(-basicAttack03Power, myBody.velocity.y);
-                    attack();
+					myBody.velocity = new Vector2(-basicAttack03Power, myBody.velocity.y);
+                    
             }
 
 		}
