@@ -6,7 +6,7 @@ public class Boss : MonoBehaviour
 {
     public Transform player;
     public bool isFlipped = false;
-    [SerializeField] float health, maxhealth = 3;
+    [SerializeField] int health, maxhealth = 100;
     [SerializeField] FloatingHeathbar healthbar;
     Rigidbody2D rb;
     Vector2 moveDirection;
@@ -35,7 +35,7 @@ public class Boss : MonoBehaviour
         healthbar = GetComponentInChildren<FloatingHeathbar>();
     }
 
-    public void TakeDamage(float damage)
+    public void TakeDamage(int damage)
     {
         health -= damage;
         healthbar.UpdateHealthBar(health, maxhealth);
@@ -59,11 +59,6 @@ public class Boss : MonoBehaviour
 
         transform.eulerAngles = rotation;
     }
-
-
-
-
-
     void Die()
     {
         Destroy(gameObject);

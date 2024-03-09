@@ -50,16 +50,14 @@ namespace EthanTheHero
 			if (playerMv.isDashing || playerMv.wallJump || playerMv.wallSliding)
 				return;
 			BasicAttackCombo();
+            
         }
 
 		void FixedUpdate()
 		{
 			if (playerMv.isDashing || playerMv.wallJump || playerMv.wallSliding)
 				return;
-
 			BasicAttackMethod();
-			
-
         }
 
 
@@ -67,23 +65,29 @@ namespace EthanTheHero
 
 		public void attack()
 		{
-			Collider2D[] enemy = Physics2D.OverlapCircleAll(attackPoint.transform.position, attackRange, enemyLayer);
-			foreach (Collider2D enemeGameObject in enemy)
-			{
-				Debug.Log("Hit enemy");
-				enemeGameObject.GetComponent<Scence1_Enemy_Behaviour>().TakeDamage(attackDamage);
-			}
-		}
+			
+            Collider2D[] enemy = Physics2D.OverlapCircleAll(attackPoint.transform.position, attackRange, enemyLayer);
+            foreach (Collider2D enemeGameObject in enemy)
+            {
+                Debug.Log("Hit enemy");
+                enemeGameObject.GetComponent<Boss>().TakeDamage(attackDamage);
+            }
+        }
 
 		private void BasicAttackCombo()
 		{
 
 			//Combo attack mechanic
 			if (Input.GetMouseButtonDown(0) && !myAnim.GetCurrentAnimatorStateInfo(0).IsName("Attack01") && !myAnim.GetCurrentAnimatorStateInfo(0).IsName("Attack02") && !myAnim.GetCurrentAnimatorStateInfo(0).IsName("Attack03") && playerMv.grounded)
+			{
+				
 				myAnim.SetTrigger(attack01);
+				attack();
+			}
+          
 
-			//Set combo attack 01 
-			if (myAnim.GetCurrentAnimatorStateInfo(0).IsName("Attack01"))
+            //Set combo attack 01 
+            if (myAnim.GetCurrentAnimatorStateInfo(0).IsName("Attack01"))
 			{
 				//See if attak button is clicked
 				if (Input.GetMouseButtonDown(0))
