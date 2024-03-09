@@ -29,6 +29,7 @@ public class Scence2_MovementEthan : MonoBehaviour
     public int attackDamage = 30;
     public LayerMask enemyLayers;
     //[SerializeField] bool isCrouched;
+    public FillBar fillBar;
 
     float horizontalValue;
     //float crouchSpeedModifier = 0.5f;
@@ -47,6 +48,7 @@ public class Scence2_MovementEthan : MonoBehaviour
     void Start()
     {
         currentHealth = maxHealth;
+        fillBar.UpdateBar(currentHealth, maxHealth);
     }
 
     // Update is called once per frame
@@ -62,7 +64,7 @@ public class Scence2_MovementEthan : MonoBehaviour
             jump = false;
 
         //if we press Crouch button enable jump
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetMouseButtonDown(0))
         {
             Attack();
         }
@@ -170,6 +172,7 @@ public class Scence2_MovementEthan : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
+        fillBar.UpdateBar(currentHealth, maxHealth);
         animator.SetTrigger("Hurt");
 
         if (currentHealth <= 0)
