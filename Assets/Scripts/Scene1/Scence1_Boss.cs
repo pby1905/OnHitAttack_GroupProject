@@ -1,19 +1,20 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Scence1_Enemy_Behaviour : MonoBehaviour
+public class Scence1_Boss : MonoBehaviour
 {
+
     public Animator anim;
     public Transform rayCast;
     public LayerMask rayCastMask;
     public float rayCastLength;
-    public float attackDistance; 
+    public float attackDistance;
     public float moveSpeed;
-    public float timer; 
+    public float timer;
     public Transform leftLimit;
     public Transform rightLimit;
-    public int maxHealth = 100;
+    public int maxHealth = 200;
     int currentHealth;
     //public Transform attackPoint;
     //public float attackRange = 0.35f;
@@ -23,20 +24,20 @@ public class Scence1_Enemy_Behaviour : MonoBehaviour
 
     private RaycastHit2D hit;
     private Transform target;
-    
-    private float distance;  
+
+    private float distance;
     private bool attackModel;
-    private bool inRange;  
-    private bool cooling; 
+    private bool inRange;
+    private bool cooling;
     private float inTimer;
 
 
     private void Awake()
     {
         SelectTarget();
-        inTimer = timer; 
+        inTimer = timer;
         anim = GetComponent<Animator>();
-       
+
     }
 
 
@@ -44,7 +45,7 @@ public class Scence1_Enemy_Behaviour : MonoBehaviour
     {
         currentHealth = maxHealth;
     }
-   
+
     void Update()
     {
 
@@ -53,7 +54,7 @@ public class Scence1_Enemy_Behaviour : MonoBehaviour
             Move();
         }
 
-        if (!InsideOfLimits() && !inRange && !anim.GetCurrentAnimatorStateInfo(0).IsName("S1_Enemy_Attack1"))
+        if (!InsideOfLimits() && !inRange && !anim.GetCurrentAnimatorStateInfo(0).IsName("S1_Boss_Attack"))
         {
             SelectTarget();
 
@@ -63,7 +64,7 @@ public class Scence1_Enemy_Behaviour : MonoBehaviour
             hit = Physics2D.Raycast(rayCast.position, transform.right, rayCastLength, rayCastMask);
             RayCastDebugger();
         }
-        
+
         if (hit.collider != null)
         {
             EnemyLogic();
@@ -79,11 +80,11 @@ public class Scence1_Enemy_Behaviour : MonoBehaviour
         }
     }
 
-   
+
 
     void OnTriggerEnter2D(Collider2D trig)
     {
-        if(trig.gameObject.tag == "Ethan" )
+        if (trig.gameObject.tag == "Ethan")
         {
             target = trig.transform;
             inRange = true;
@@ -93,11 +94,11 @@ public class Scence1_Enemy_Behaviour : MonoBehaviour
 
     void RayCastDebugger()
     {
-        if(distance > attackDistance)
+        if (distance > attackDistance)
         {
             Debug.DrawRay(rayCast.position, transform.right * rayCastLength, Color.green);
         }
-        else if(attackDistance > distance)
+        else if (attackDistance > distance)
         {
             Debug.DrawRay(rayCast.position, transform.right * rayCastLength, Color.green);
         }
@@ -106,11 +107,11 @@ public class Scence1_Enemy_Behaviour : MonoBehaviour
     void EnemyLogic()
     {
         distance = Vector2.Distance(transform.position, target.position);
-        if(distance > attackDistance) 
+        if (distance > attackDistance)
         {
             StopAttack();
         }
-        else if( attackDistance >= distance && cooling == false )
+        else if (attackDistance >= distance && cooling == false)
         {
             AttackEthan();
         }
@@ -124,7 +125,7 @@ public class Scence1_Enemy_Behaviour : MonoBehaviour
     void Move()
     {
         anim.SetBool("CanWalk", true);
-        if (!anim.GetCurrentAnimatorStateInfo(0).IsName("S1_Enemy_Attack1"))
+        if (!anim.GetCurrentAnimatorStateInfo(0).IsName("S1_Boss_Attack"))
         {
             Vector2 targetPosition = new Vector2(target.position.x, transform.position.y);
             transform.position = Vector2.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
@@ -150,7 +151,7 @@ public class Scence1_Enemy_Behaviour : MonoBehaviour
     void Cooldown()
     {
         timer -= Time.deltaTime;
-        if( timer <= 0 && cooling && attackModel)
+        if (timer <= 0 && cooling && attackModel)
         {
             cooling = false;
             timer = inTimer;
@@ -170,7 +171,7 @@ public class Scence1_Enemy_Behaviour : MonoBehaviour
     {
         float distanceToLeft = Vector3.Distance(transform.position, leftLimit.position);
         float distanceRight = Vector3.Distance(transform.position, rightLimit.position);
-        if(distanceToLeft > distanceRight)
+        if (distanceToLeft > distanceRight)
         {
             target = leftLimit;
         }
@@ -184,7 +185,7 @@ public class Scence1_Enemy_Behaviour : MonoBehaviour
     private void Flip()
     {
         Vector3 rotation = transform.eulerAngles;
-        if(transform.position.x > target.position.x)
+        if (transform.position.x > target.position.x)
         {
             rotation.y = 180;
         }
@@ -201,9 +202,9 @@ public class Scence1_Enemy_Behaviour : MonoBehaviour
         currentHealth -= damage;
         anim.SetTrigger("Hurt");
 
-        if(currentHealth <= 0)
+        if (currentHealth <= 0)
         {
-            Debug.Log("Enemy died!");
+            Debug.Log("Boss died!");
             Die();
         }
     }
@@ -214,15 +215,7 @@ public class Scence1_Enemy_Behaviour : MonoBehaviour
         this.enabled = false;
         GetComponent<Collider2D>().enabled = false;
         this.enabled = false;
-        
+
 
     }
-
-    //void OnDrawGizmosSelected()
-    //{
-    //    if (attackPoint == null)
-    //        return;
-    //    Gizmos.DrawWireSphere(attackPoint.position, attackRange);
-    //}
 }
-
