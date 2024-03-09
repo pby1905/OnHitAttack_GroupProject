@@ -63,7 +63,7 @@ namespace EthanTheHero
 
 		#region BASIC ATTACK
 
-		public void attack()
+		/*public void attack()
 		{
 			
             Collider2D[] enemy = Physics2D.OverlapCircleAll(attackPoint.transform.position, attackRange, enemyLayer);
@@ -72,7 +72,7 @@ namespace EthanTheHero
                 Debug.Log("Hit enemy");
                 enemeGameObject.GetComponent<Boss>().TakeDamage(attackDamage);
             }
-        }
+        }*/
 
 		private void BasicAttackCombo()
 		{
@@ -82,8 +82,8 @@ namespace EthanTheHero
 			{
 				
 				myAnim.SetTrigger(attack01);
-				attack();
-			}
+                
+            }
           
 
             //Set combo attack 01 

@@ -608,7 +608,7 @@ PrefabInstance:
     - target: {fileID: 114164791449630524, guid: 145c07d78e4332a40bbf42389a7172e5, type: 3}
       propertyPath: attackPoint
       value: 
-      objectReference: {fileID: 1101078469}
+      objectReference: {fileID: 2054528303}
     - target: {fileID: 114164791449630524, guid: 145c07d78e4332a40bbf42389a7172e5, type: 3}
       propertyPath: enemyLayer.m_Bits
       value: 256
@@ -1031,7 +1031,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a056a73ede3e8d4a828b74e9fba6d1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slider: {fileID: 474339104}
 --- !u!1 &514133708
 GameObject:
   m_ObjectHideFlags: 0
@@ -2310,11 +2309,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &1101078469 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4491495956398454076, guid: 145c07d78e4332a40bbf42389a7172e5, type: 3}
-  m_PrefabInstance: {fileID: 196275827}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1158428249
 GameObject:
   m_ObjectHideFlags: 0
@@ -36490,7 +36484,6 @@ GameObject:
   - component: {fileID: 2054528308}
   - component: {fileID: 2054528307}
   - component: {fileID: 2054528309}
-  - component: {fileID: 2054528318}
   - component: {fileID: 2054528319}
   - component: {fileID: 2054528310}
   - component: {fileID: 2054528315}
@@ -36687,23 +36680,7 @@ MonoBehaviour:
   attackDistance: 4
   movespeed: 4
   timer: 2
---- !u!114 &2054528318
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2054528303}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 443f701736005c747b5ee3a5ed567a9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 196275828}
-  isFlipped: 0
-  health: 0
-  maxhealth: 3
-  healthbar: {fileID: 474339105}
+  maxHealth: 100
 --- !u!114 &2054528319
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36717,7 +36694,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHealth: {fileID: 1809179094}
-  damage: 1
+  damage: 20
 --- !u!1 &2142343541
 GameObject:
   m_ObjectHideFlags: 0
