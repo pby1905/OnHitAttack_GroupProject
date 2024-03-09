@@ -21,6 +21,7 @@ public class PlayerMoving : MonoBehaviour
     public BloodBar BloodBar;
     [SerializeReference]public float bloodpre;
     public float maxblood = 10;
+    Scene1_AudioManager audioManager;
     void Start()
     {
         bloodpre = maxblood;
@@ -38,6 +39,7 @@ public class PlayerMoving : MonoBehaviour
         mask = GetComponent<SpriteRenderer>();
         collider2D = GetComponent<Collider2D>();
         anim = GetComponent<Animator>();
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<Scene1_AudioManager>();
     }
 
     void Update()
@@ -62,6 +64,7 @@ public class PlayerMoving : MonoBehaviour
         }
         else if (collisionkhac.gameObject.CompareTag("hitBox"))
         {
+            audioManager.PlaySFX(audioManager.attack);
             bloodpre -= 1;
             BloodBar.UpdateBloodBar(bloodpre, maxblood);
             state = MovemenState.hurt;

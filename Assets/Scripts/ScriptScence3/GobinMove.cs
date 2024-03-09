@@ -16,6 +16,7 @@ public class GobinMove : MonoBehaviour
     public float attackRange = 1.0f;
     private bool playerDetected = false;
     private bool playerholder = false;
+    Scene1_AudioManager audioManager;
 
     public GameObject enemyToActivate;
     void Start()
@@ -28,6 +29,7 @@ public class GobinMove : MonoBehaviour
         rg = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         mask = GetComponent<SpriteRenderer>();
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<Scene1_AudioManager>();
     }
     void Update()
     {
@@ -46,6 +48,7 @@ public class GobinMove : MonoBehaviour
         {
             if (distanceToPlayer <= attackRange)
             {
+                audioManager.PlaySFX(audioManager.attack);
                 state = Movementstate.attack1;
                 anim.SetInteger("state", (int)state);
             }

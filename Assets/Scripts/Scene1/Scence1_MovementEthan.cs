@@ -37,14 +37,15 @@ public class Scence1_MovementEthan : MonoBehaviour
     //float crouchSpeedModifier = 0.5f;
     bool facingRight = true;
     //bool crouchPressed;
+    Scene1_AudioManager audioManager;
 
-  
     // Start is called before the first frame update
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<Scene1_AudioManager>();
     }
     void Start()
     {
@@ -145,6 +146,7 @@ public class Scence1_MovementEthan : MonoBehaviour
     void Attack()
     {
         animator.SetTrigger("Attack");
+        audioManager.PlaySFX(audioManager.attack);
         Collider2D[] hitEnemies =  Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
         foreach(Collider2D enemy in hitEnemies)
         {
