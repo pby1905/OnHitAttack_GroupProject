@@ -19,7 +19,7 @@ public class Scence2_MovementEthan : MonoBehaviour
     const float foreCheckRadius = 0.2f;
     //const float overheadCheckRadius = 0.2f;
     [SerializeField] float speed = 300;
-    [SerializeField] float jumpPower = 150;
+    [SerializeField] float jumpPower = 130;
     bool jump;
     public int maxHealth = 100;
     int currentHealth;
@@ -34,6 +34,7 @@ public class Scence2_MovementEthan : MonoBehaviour
     //float crouchSpeedModifier = 0.5f;
     bool facingRight = true;
     //bool crouchPressed;
+    Scene2_AudioManager audioManager;
 
     // Start is called before the first frame update
 
@@ -41,6 +42,7 @@ public class Scence2_MovementEthan : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<Scene2_AudioManager>();
     }
     void Start()
     {
@@ -50,6 +52,7 @@ public class Scence2_MovementEthan : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+      
         horizontalValue = Input.GetAxisRaw("Horizontal");
 
         //if we press Jump button enable jump
@@ -92,8 +95,8 @@ public class Scence2_MovementEthan : MonoBehaviour
     void Movement(float dir, bool jumpFlag)
     {
         #region Jump && Crouch
+
        
-        
 
         //If we press Crouch we disable standing collider + player crouching
         //Reduce the speed
@@ -106,7 +109,7 @@ public class Scence2_MovementEthan : MonoBehaviour
             {
                 isGrounded = false;
                 jumpFlag = false;
-                rb.AddForce(new Vector2(0f, jumpPower));
+                rb.AddForce(new Vector2(12f, jumpPower));
             }
 
         }
@@ -144,14 +147,18 @@ public class Scence2_MovementEthan : MonoBehaviour
 
     void Attack()
     {
+       
         animator.SetTrigger("Attack");
+        audioManager.PlaySFX(audioManager.attack);
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
         foreach (Collider2D enemy in hitEnemies)
         {
-            enemy.GetComponent<Monster_behavior>().TakeDamage(attackDamage);
+
+          enemy.GetComponent<Monster_behavior>().TakeDamage(attackDamage);
             Debug.Log("Hit: " + enemy.name);
         }
     }
+   
 
     void OnDrawGizmosSelected()
     {
@@ -167,7 +174,7 @@ public class Scence2_MovementEthan : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            Debug.Log("Enemy died!");
+            Debug.Log("Ethan died!");
             Die();
         }
     }
