@@ -606,8 +606,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114164791449630524, guid: 145c07d78e4332a40bbf42389a7172e5, type: 3}
+      propertyPath: attackPoint
+      value: 
+      objectReference: {fileID: 1101078469}
+    - target: {fileID: 114164791449630524, guid: 145c07d78e4332a40bbf42389a7172e5, type: 3}
       propertyPath: enemyLayer.m_Bits
       value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 114889116844108038, guid: 145c07d78e4332a40bbf42389a7172e5, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2415909631007368797, guid: 145c07d78e4332a40bbf42389a7172e5, type: 3}
       propertyPath: m_AnchorMax.x
@@ -2298,6 +2306,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1101078469 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4491495956398454076, guid: 145c07d78e4332a40bbf42389a7172e5, type: 3}
+  m_PrefabInstance: {fileID: 196275827}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1158428249
 GameObject:
   m_ObjectHideFlags: 0
@@ -36683,10 +36696,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 196275828}
-  isFlipped: 1
+  isFlipped: 0
   health: 0
   maxhealth: 3
-  healthbar: {fileID: 0}
+  healthbar: {fileID: 474339105}
 --- !u!114 &2054528319
 MonoBehaviour:
   m_ObjectHideFlags: 0

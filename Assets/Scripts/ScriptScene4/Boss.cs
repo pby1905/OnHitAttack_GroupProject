@@ -16,7 +16,18 @@ public class Boss : MonoBehaviour
         health = maxhealth;
         healthbar.UpdateHealthBar(health, maxhealth);
         player = GameObject.Find("Player").transform;
+        
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            player = collision.transform;
+            Flip();
+        }
+    }
+
 
 
     private void Awake()
@@ -34,6 +45,25 @@ public class Boss : MonoBehaviour
         }
     }
 
+    private void Flip()
+    {
+        Vector3 rotation = transform.eulerAngles;
+        if (transform.position.x > player.position.x)
+        {
+            rotation.y = 180;
+        }
+        else
+        {
+            rotation.y = 0;
+        }
+
+        transform.eulerAngles = rotation;
+    }
+
+
+
+
+
     void Die()
     {
         Destroy(gameObject);
@@ -41,21 +71,5 @@ public class Boss : MonoBehaviour
 
 
 
-   /* public void LookAtPlayer()
-    {
-        Vector3 flipped = transform.localScale;
-        flipped.z *= -1f;
-        if (transform.position.x > player.position.x && isFlipped)
-        {
-            transform.localScale = flipped;
-            transform.Rotate(0f, 180f, 0f);
-            isFlipped = false;
-        }
-        else
-        {
-            transform.localScale = flipped;
-            transform.Rotate(0f, 180f, 0f);
-            isFlipped = true;
-        }
-    }*/
+
 }
