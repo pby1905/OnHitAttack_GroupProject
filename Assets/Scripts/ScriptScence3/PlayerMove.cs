@@ -18,19 +18,20 @@ public class PlayerMoving : MonoBehaviour
     private enum MovemenState { idle, running, jumping, hurt, attack1, attack2, attack3, death}; 
     private MovemenState state = MovemenState.idle;
 
-    public FillBar BloodBar;
-    [SerializeReference]public int bloodpre;
-    public int maxblood = 100;
+    public BloodBar BloodBar;
+    [SerializeReference]public float bloodpre;
+    public float maxblood = 10;
+    Scene1_AudioManager audioManager;
     void Start()
     {
         bloodpre = maxblood;
-        BloodBar.UpdateBar(bloodpre, maxblood);
+        BloodBar.UpdateBloodBar(bloodpre, maxblood);
     }
 
     private void OnMouseDown()
     {
-        bloodpre -= 10;
-        BloodBar.UpdateBar(bloodpre, maxblood);
+        bloodpre -= 1;
+        BloodBar.UpdateBloodBar(bloodpre, maxblood);
     }
     public void Awake()
     {
@@ -38,6 +39,7 @@ public class PlayerMoving : MonoBehaviour
         mask = GetComponent<SpriteRenderer>();
         collider2D = GetComponent<Collider2D>();
         anim = GetComponent<Animator>();
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<Scene1_AudioManager>();
     }
 
     void Update()
@@ -62,8 +64,9 @@ public class PlayerMoving : MonoBehaviour
         }
         else if (collisionkhac.gameObject.CompareTag("hitBox"))
         {
-            bloodpre -= 10;
-            BloodBar.UpdateBar(bloodpre, maxblood);
+            audioManager.PlaySFX(audioManager.attack);
+            bloodpre -= 1;
+            BloodBar.UpdateBloodBar(bloodpre, maxblood);
             state = MovemenState.hurt;
             anim.SetInteger("state", (int)state);
         }
