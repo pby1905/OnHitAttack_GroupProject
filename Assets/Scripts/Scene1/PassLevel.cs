@@ -9,7 +9,7 @@ public class PassLevel : MonoBehaviour
     {
         if (collision.CompareTag("Ethan"))
         {
-            SceneManager.LoadSceneAsync(2);
+            SceneManager.LoadSceneAsync(4);
         }
     }
 }
