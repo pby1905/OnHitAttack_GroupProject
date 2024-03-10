@@ -9,14 +9,14 @@ public class PlayerHealthInteraction : MonoBehaviour
     public int maxHealth = 100;
     public int currentHealth;
 
-    public PlayerHealth healthbar;
+    public FillBar healthbar;
 
    
 
     void Start()
     {
         currentHealth = maxHealth;
-        healthbar.SetHealth(maxHealth);
+        healthbar.UpdateBar(currentHealth, maxHealth);
     }
 
     /*void Update()
@@ -30,9 +30,9 @@ public class PlayerHealthInteraction : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
-        healthbar.SetHealth(currentHealth);
+        healthbar.UpdateBar(currentHealth, maxHealth);
 
-        if(currentHealth < 0)
+        if (currentHealth < 0)
         {
             Destroy(gameObject);
         }
