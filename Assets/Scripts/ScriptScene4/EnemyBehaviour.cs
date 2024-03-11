@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 
 public class EnemyBehavior : MonoBehaviour
 {
@@ -189,12 +190,18 @@ public class EnemyBehavior : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            Debug.Log("Enemy died!");
-            Destroy(gameObject);
+            Die();
+            
         }
         
     }
 
+    public void Die()
+    {
+        Debug.Log("Enemy died!");
+        Destroy(gameObject);
+        SceneManager.LoadScene("MainMenu");
+    }
    
 
 }
