@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealthInteraction : MonoBehaviour
 {
@@ -32,9 +33,15 @@ public class PlayerHealthInteraction : MonoBehaviour
         currentHealth -= damage;
         healthbar.UpdateBar(currentHealth, maxHealth);
 
-        if (currentHealth < 0)
+        if (currentHealth <= 0)
         {
-            Destroy(gameObject);
+            Die();
         }
+    }
+
+    public void Die()
+    {
+        Destroy(gameObject);
+        SceneManager.LoadScene("Scene1");
     }
 }

@@ -7,21 +7,21 @@ namespace EthanTheHero
 	public class PlayerAttackMethod : MonoBehaviour
 	{
 		#region FIELD
-		public GameObject attackPoint;
+		/*public GameObject attackPoint;
 		public float attackRange = 0.35f;
 		public int attackDamage = 40;
-		public LayerMask enemyLayer;
+		public LayerMask enemyLayer;*/
 
 		private PlayerAnimation playerAnim;
 		private PlayerMovement playerMv;
 		private Animator myAnim;
 		private Rigidbody2D myBody;
+		private PlayerAttackEnemy myEnemy;
+        
 
-		
-		
 
 
-		[Header("Basic Attack")]
+        [Header("Basic Attack")]
 		public float basicAttack01Power = 0.5f;
 		public float basicAttack02Power = 0.5f;
 		public float basicAttack03Power = 0.9f;
@@ -43,14 +43,17 @@ namespace EthanTheHero
 			playerAnim = GetComponent<PlayerAnimation>();
 			myBody = GetComponent<Rigidbody2D>();
 			playerMv = GetComponent<PlayerMovement>();
+			myEnemy = GetComponent<PlayerAttackEnemy>();
+
 		}
 
 		void Update()
 		{
+			
 			if (playerMv.isDashing || playerMv.wallJump || playerMv.wallSliding)
 				return;
 			BasicAttackCombo();
-            
+			
         }
 
 		void FixedUpdate()
@@ -58,23 +61,16 @@ namespace EthanTheHero
 			if (playerMv.isDashing || playerMv.wallJump || playerMv.wallSliding)
 				return;
 			BasicAttackMethod();
+            
         }
 
 
-		#region BASIC ATTACK
+        #region BASIC ATTACK
 
-		/*public void attack()
-		{
-			
-            Collider2D[] enemy = Physics2D.OverlapCircleAll(attackPoint.transform.position, attackRange, enemyLayer);
-            foreach (Collider2D enemeGameObject in enemy)
-            {
-                Debug.Log("Hit enemy");
-                enemeGameObject.GetComponent<Boss>().TakeDamage(attackDamage);
-            }
-        }*/
+        
 
-		private void BasicAttackCombo()
+
+        private void BasicAttackCombo()
 		{
 
 			//Combo attack mechanic
@@ -82,7 +78,7 @@ namespace EthanTheHero
 			{
 				
 				myAnim.SetTrigger(attack01);
-                
+				/*myEnemy.Attack();*/
             }
           
 
@@ -91,15 +87,20 @@ namespace EthanTheHero
 			{
 				//See if attak button is clicked
 				if (Input.GetMouseButtonDown(0))
-					atkButtonClickedOnAtk01 = true;
+				{
+                    atkButtonClickedOnAtk01 = true;
+                    /*myEnemy.Attack();*/
+                }
+					
 
 				//Set if attack 01 animation is ended playying and attack button is clicked while attack 01 animation is playing
 				if (myAnim.GetCurrentAnimatorStateInfo(0).normalizedTime >= .8 && atkButtonClickedOnAtk01)
 				{
 					myAnim.SetTrigger(attack02);
 					atkButtonClickedOnAtk01 = false;
+                   /* myEnemy.Attack();*/
 
-				}
+                }
 				//Set if attack 01 animation is ended playying and attack button is not clicked while attack 01 animation is playing
 				else if (myAnim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1 && !atkButtonClickedOnAtk01)
 					myAnim.SetTrigger(notAttacking);
@@ -110,15 +111,19 @@ namespace EthanTheHero
 			{
 				//See if attak button is clicked
 				if (Input.GetMouseButtonDown(0))
-					atkButtonClickedOnAtk02 = true;
+				{
+                    /*myEnemy.Attack();*/
+                    atkButtonClickedOnAtk02 = true;
+                }
+					
 
 				//Set if attack 02 animation is ended playying and attack button is clicked while attack 02 animation is playing
 				if (myAnim.GetCurrentAnimatorStateInfo(0).normalizedTime >= .8 && atkButtonClickedOnAtk02)
 				{
 					myAnim.SetTrigger(attack03);
 					atkButtonClickedOnAtk02 = false;
-
-				}
+                    /*myEnemy.Attack();*/
+                }
 				//Set if attack 02 animation is ended playying and attack button is not clicked while attack 02 animation is playing
 				else if (myAnim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1 && !atkButtonClickedOnAtk02)
 					myAnim.SetTrigger(notAttacking);
@@ -129,15 +134,20 @@ namespace EthanTheHero
 			{
 				//See if attak button is clicked
 				if (Input.GetMouseButtonDown(0))
-					atkButtonClickedOnAtk03 = true;
+				{
+                    atkButtonClickedOnAtk03 = true;
+                    /*myEnemy.Attack();*/
+                }
+					
 
 				//Set if attack 03 animation is ended playying and attack button is clicked while attack 03 animation is playing
 				if (myAnim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1 && atkButtonClickedOnAtk03)
 				{
 					myAnim.SetTrigger(attack01);
 					atkButtonClickedOnAtk03 = false;
+                    
 
-				}
+                }
 				//Set if attack 03 animation is ended playying and attack button is not clicked while attack 03 animation is playing
 				else if (myAnim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1 && !atkButtonClickedOnAtk03)
 					myAnim.SetTrigger(notAttacking);

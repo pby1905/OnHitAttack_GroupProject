@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 
 public class EnemyBehavior : MonoBehaviour
 {
@@ -13,7 +14,10 @@ public class EnemyBehavior : MonoBehaviour
     public float movespeed;
     public float timer; // Timer for cooldown between attack
     public int maxHealth = 100;
-    int currentHealth;
+    public int currentHealth;
+    public GameObject bloodEffect;
+    
+
 
     #endregion
 
@@ -35,9 +39,6 @@ public class EnemyBehavior : MonoBehaviour
         rayCast = GameObject.Find("Player").transform;
         currentHealth = maxHealth;
     }
-
-
-
 
     void Awake()
     {
@@ -170,25 +171,37 @@ public class EnemyBehavior : MonoBehaviour
 
         transform.eulerAngles = rotation;
     }
-    public void TakeDamage(int damage)
-    {
-        currentHealth -= damage;
-        animator.SetTrigger("Hurt");
 
-        if (currentHealth <= 0)
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.gameObject.tag == "Player")
         {
-            Debug.Log("Enemy died!");
-            Die();
+            TakeDamage(17);
         }
     }
 
-    void Die()
+
+
+    public void TakeDamage(int damage)
     {
-        animator.SetBool("Death", true);
-        this.enabled = false;
-        GetComponent<Collider2D>().enabled = false;
-        this.enabled = false;
+        /*Instantiate(bloodEffect, rayCast);*/
+        currentHealth -= damage;
+       
+
+        if (currentHealth <= 0)
+        {
+            Die();
+            
+        }
+        
     }
 
+    public void Die()
+    {
+        Debug.Log("Enemy died!");
+        Destroy(gameObject);
+        SceneManager.LoadScene("MainMenu");
+    }
+   
 
 }
