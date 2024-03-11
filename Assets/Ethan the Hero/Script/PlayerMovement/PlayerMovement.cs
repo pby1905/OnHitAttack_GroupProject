@@ -68,8 +68,9 @@ namespace EthanTheHero
 
 			if (wallSliding && jumpButtonPressed)
 				StartCoroutine(wallJumpMechanic());
+            
 
-		}
+        }
 
 		void FixedUpdate()
 		{
@@ -203,6 +204,8 @@ namespace EthanTheHero
 				tem.x = 1f;
 			transform.localScale = tem;
 		}
-		#endregion
-	}
+        #endregion
+
+        
+    }
 }

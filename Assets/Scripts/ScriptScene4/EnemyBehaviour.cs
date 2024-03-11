@@ -13,7 +13,10 @@ public class EnemyBehavior : MonoBehaviour
     public float movespeed;
     public float timer; // Timer for cooldown between attack
     public int maxHealth = 100;
-    int currentHealth;
+    public int currentHealth;
+    public GameObject bloodEffect;
+    
+
 
     #endregion
 
@@ -35,9 +38,6 @@ public class EnemyBehavior : MonoBehaviour
         rayCast = GameObject.Find("Player").transform;
         currentHealth = maxHealth;
     }
-
-
-
 
     void Awake()
     {
@@ -170,25 +170,31 @@ public class EnemyBehavior : MonoBehaviour
 
         transform.eulerAngles = rotation;
     }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.gameObject.tag == "Player")
+        {
+            TakeDamage(20);
+        }
+    }
+
+
+
     public void TakeDamage(int damage)
     {
+        /*Instantiate(bloodEffect, rayCast);*/
         currentHealth -= damage;
-        animator.SetTrigger("Hurt");
+       
 
         if (currentHealth <= 0)
         {
             Debug.Log("Enemy died!");
-            Die();
+            Destroy(gameObject);
         }
+        
     }
 
-    void Die()
-    {
-        animator.SetBool("Death", true);
-        this.enabled = false;
-        GetComponent<Collider2D>().enabled = false;
-        this.enabled = false;
-    }
-
+   
 
 }
