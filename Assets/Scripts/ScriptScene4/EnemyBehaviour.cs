@@ -175,7 +175,7 @@ public class EnemyBehavior : MonoBehaviour
     {
         if (collision.collider.gameObject.tag == "Player")
         {
-            TakeDamage(20);
+            TakeDamage(17);
         }
     }
 

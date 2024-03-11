@@ -32,7 +32,7 @@ public class PlayerHealthInteraction : MonoBehaviour
         currentHealth -= damage;
         healthbar.UpdateBar(currentHealth, maxHealth);
 
-        if (currentHealth < 0)
+        if (currentHealth <= 0)
         {
             Destroy(gameObject);
         }

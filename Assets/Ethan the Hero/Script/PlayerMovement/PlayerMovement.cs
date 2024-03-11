@@ -31,6 +31,9 @@ namespace EthanTheHero
 		[HideInInspector] public bool grounded;
 		[HideInInspector] public bool isJumping;
 		private bool jumpButtonPressed;
+		public int maxjump = 2;
+		public int jumpremain;
+
 
 		//Wall Sliding and Wall Jump
 		[HideInInspector] public bool wallJump;
@@ -45,6 +48,7 @@ namespace EthanTheHero
 		{
 			myBody = GetComponent<Rigidbody2D>();
 			myAnim = GetComponent<Animator>();
+			
 		}
 		void Update()
 		{
@@ -83,7 +87,8 @@ namespace EthanTheHero
 			if (Physics2D.OverlapBox(groundCheckPoint.position, groundCheckSize, 0, groundLayer))
 			{
 				lastOnGroundTime = 0.1f;
-				grounded = true;
+                jumpremain = maxjump;
+                grounded = true;
 			}
 			else
 				grounded = false;
@@ -149,13 +154,17 @@ namespace EthanTheHero
 		private void jump()
 		{
 			if (grounded)
-				isJumping = false;
+			{
+                isJumping = false;				
+            }
+				
 
 
-			if (jumpButtonPressed && grounded)
+			if (jumpButtonPressed && grounded && jumpremain >= 0)
 			{
 				isJumping = true;
 				myBody.velocity = new Vector2(myBody.velocity.x, data.jumpHeight);
+				jumpremain--;
 			}
 		}
 		#endregion
