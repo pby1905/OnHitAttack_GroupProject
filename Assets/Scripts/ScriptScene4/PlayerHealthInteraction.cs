@@ -1,3 +1,4 @@
+using EthanTheHero;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,7 +10,6 @@ public class PlayerHealthInteraction : MonoBehaviour
 {
     public int maxHealth = 100;
     public int currentHealth;
-
     public FillBar healthbar;
 
    
@@ -31,6 +31,7 @@ public class PlayerHealthInteraction : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
+        
         healthbar.UpdateBar(currentHealth, maxHealth);
 
         if (currentHealth <= 0)
