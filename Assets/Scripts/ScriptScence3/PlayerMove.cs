@@ -24,7 +24,7 @@ public class PlayerMoving : MonoBehaviour
     Scene1_AudioManager audioManager;
     void Start()
     {
-        bloodpre = maxblood;
+        bloodpre = ManageEthanBlood.instance.scene1_CurrentHealth;
         BloodBar.UpdateBar(bloodpre, maxblood);
     }
 

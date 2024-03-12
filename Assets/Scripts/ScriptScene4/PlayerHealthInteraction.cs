@@ -15,7 +15,7 @@ public class PlayerHealthInteraction : MonoBehaviour
 
     void Start()
     {
-        currentHealth = maxHealth;
+        currentHealth = ManageEthanBlood.instance.scene1_CurrentHealth;
         healthbar.UpdateBar(currentHealth, maxHealth);
     }
 
