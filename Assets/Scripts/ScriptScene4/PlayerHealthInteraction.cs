@@ -39,6 +39,23 @@ public class PlayerHealthInteraction : MonoBehaviour
             Die();
         }
     }
+    public void Healing(int plusmark)
+    {
+        if (currentHealth < 100)
+        {
+            currentHealth += plusmark;
+            healthbar.UpdateBar(currentHealth, maxHealth);
+
+            if (currentHealth >= 100)
+            {
+                currentHealth = 100;
+                healthbar.UpdateBar(currentHealth, maxHealth);
+            }
+        }
+
+    }
+
+
 
     public void Die()
     {
