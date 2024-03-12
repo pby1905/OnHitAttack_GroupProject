@@ -186,7 +186,7 @@ public class EnemyBehavior : MonoBehaviour
     {
         /*Instantiate(bloodEffect, rayCast);*/
         currentHealth -= damage;
-       
+        animator.SetTrigger("Hurt");
 
         if (currentHealth <= 0)
         {
@@ -199,6 +199,10 @@ public class EnemyBehavior : MonoBehaviour
     public void Die()
     {
         Debug.Log("Enemy died!");
+        
+        // Disable the enemy
+        GetComponent<Collider2D>().enabled = false;
+        this.enabled = false;
         Destroy(gameObject);
         SceneManager.LoadScene("MainMenu");
     }

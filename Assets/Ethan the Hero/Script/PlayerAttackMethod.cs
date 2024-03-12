@@ -16,9 +16,8 @@ namespace EthanTheHero
 		private PlayerMovement playerMv;
 		private Animator myAnim;
 		private Rigidbody2D myBody;
-		private PlayerAttackEnemy myEnemy;
-        
-
+		public int damage = 20;
+		private PlayerAttackEnemy takeHit;
 
 
         [Header("Basic Attack")]
@@ -43,7 +42,7 @@ namespace EthanTheHero
 			playerAnim = GetComponent<PlayerAnimation>();
 			myBody = GetComponent<Rigidbody2D>();
 			playerMv = GetComponent<PlayerMovement>();
-			myEnemy = GetComponent<PlayerAttackEnemy>();
+			takeHit = GetComponent<PlayerAttackEnemy>();
 
 		}
 
@@ -78,8 +77,8 @@ namespace EthanTheHero
 			{
 				
 				myAnim.SetTrigger(attack01);
-				/*myEnemy.Attack();*/
-            }
+				
+			}
           
 
             //Set combo attack 01 
@@ -89,20 +88,21 @@ namespace EthanTheHero
 				if (Input.GetMouseButtonDown(0))
 				{
                     atkButtonClickedOnAtk01 = true;
-                    /*myEnemy.Attack();*/
+					/*myEnemy.Attack();*/
+					takeHit.Attack();
                 }
-					
 
-				//Set if attack 01 animation is ended playying and attack button is clicked while attack 01 animation is playing
-				if (myAnim.GetCurrentAnimatorStateInfo(0).normalizedTime >= .8 && atkButtonClickedOnAtk01)
+
+                //Set if attack 01 animation is ended playying and attack button is clicked while attack 01 animation is playing
+                if (myAnim.GetCurrentAnimatorStateInfo(0).normalizedTime >= .8 && atkButtonClickedOnAtk01)
 				{
 					myAnim.SetTrigger(attack02);
 					atkButtonClickedOnAtk01 = false;
-                   /* myEnemy.Attack();*/
+                    /*myEnemy.Attack();*/
 
                 }
-				//Set if attack 01 animation is ended playying and attack button is not clicked while attack 01 animation is playing
-				else if (myAnim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1 && !atkButtonClickedOnAtk01)
+                //Set if attack 01 animation is ended playying and attack button is not clicked while attack 01 animation is playing
+                else if (myAnim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1 && !atkButtonClickedOnAtk01)
 					myAnim.SetTrigger(notAttacking);
 			}
 
@@ -114,6 +114,7 @@ namespace EthanTheHero
 				{
                     /*myEnemy.Attack();*/
                     atkButtonClickedOnAtk02 = true;
+                    takeHit.Attack();
                 }
 					
 
@@ -124,8 +125,8 @@ namespace EthanTheHero
 					atkButtonClickedOnAtk02 = false;
                     /*myEnemy.Attack();*/
                 }
-				//Set if attack 02 animation is ended playying and attack button is not clicked while attack 02 animation is playing
-				else if (myAnim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1 && !atkButtonClickedOnAtk02)
+                //Set if attack 02 animation is ended playying and attack button is not clicked while attack 02 animation is playing
+                else if (myAnim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1 && !atkButtonClickedOnAtk02)
 					myAnim.SetTrigger(notAttacking);
 			}
 
@@ -137,15 +138,16 @@ namespace EthanTheHero
 				{
                     atkButtonClickedOnAtk03 = true;
                     /*myEnemy.Attack();*/
+                    takeHit.Attack();
                 }
-					
 
-				//Set if attack 03 animation is ended playying and attack button is clicked while attack 03 animation is playing
-				if (myAnim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1 && atkButtonClickedOnAtk03)
+
+                //Set if attack 03 animation is ended playying and attack button is clicked while attack 03 animation is playing
+                if (myAnim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1 && atkButtonClickedOnAtk03)
 				{
 					myAnim.SetTrigger(attack01);
 					atkButtonClickedOnAtk03 = false;
-                    
+                    /*myEnemy.Attack();*/
 
                 }
 				//Set if attack 03 animation is ended playying and attack button is not clicked while attack 03 animation is playing
@@ -189,8 +191,8 @@ namespace EthanTheHero
 
 		}
 
-		#endregion
+        #endregion
+        
 
-
-	}
+    }
 }

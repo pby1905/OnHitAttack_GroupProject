@@ -1,3 +1,4 @@
+using EthanTheHero;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,6 +13,7 @@ public class PlayerAttackEnemy : MonoBehaviour
     public float attackRange;
     public int damage;
     private EnemyBehavior enemyBehavior;
+    private PlayerAttackMethod method;
 
 
     void Awake()
@@ -30,7 +32,8 @@ public class PlayerAttackEnemy : MonoBehaviour
                 Collider2D[] collider = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatIsEnemies);
                 for(int i = 0; i < collider.Length; i++)
                 {
-                    collider[i].GetComponent<EnemyBehavior>().TakeDamage(damage);
+                    collider[i].GetComponent<EnemyBehavior>().TakeDamage(enemyBehavior.currentHealth);
+                    
                 }            
             }
             timeBtwAttack = startTimeBtwAttack;
