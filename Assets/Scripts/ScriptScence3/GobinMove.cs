@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using static GobinMove;
 
@@ -7,93 +9,164 @@ public class GobinMove : MonoBehaviour
 {
     private SpriteRenderer mask;
     private Rigidbody2D rg;
-    private Animator anim;
     private enum Movementstate { idle, run, takehit, death, attack1, attack2 };
     private Movementstate state = Movementstate.idle;
 
-    public Transform player;
-    public float detectionRange = 5f;
-    public float attackRange = 1.0f;
-    private bool playerDetected = false;
-    private bool playerholder = false;
-
     public GameObject enemyToActivate;
-    void Start()
-    {
-        
 
-    }
-    private void Awake()
+    #region Public Variables
+    public Transform rayCast;
+    public LayerMask rayCastMask;
+    public float rayCastLenght;
+    public float attackDistance;
+    public float moveSpeed;
+    public float timer;
+    #endregion
+
+    #region Private Variables
+    private RaycastHit2D hit;
+    private GameObject target;
+    private Animator anim;
+    private float distance;
+    private bool attackMode;
+    private bool inRange;
+    private bool cooling;
+    private float intTimer;
+    #endregion
+    private int collisionCount = 0;
+    public bool IsDied = false;
+
+
+    void Awake()
     {
         rg = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();
+        
         mask = GetComponent<SpriteRenderer>();
+
+        intTimer = timer;
+        anim = GetComponent<Animator>();
+
     }
     void Update()
     {
-        float distanceToPlayer = Vector2.Distance(transform.position, player.position);
-
-        if (distanceToPlayer <= detectionRange)
+        if (inRange)
         {
-            playerDetected = true;
+            hit = Physics2D.Raycast(rayCast.position, Vector2.left, rayCastLenght, rayCastMask);
+            RayCastDebug();
         }
-        else
+
+        if(hit.collider != null)
         {
-            playerDetected = false;
-        }
-
-        if (playerDetected)
+            EnemyLogic();
+        }else if(hit.collider != null)
         {
-            if (distanceToPlayer <= attackRange)
-            {
-                state = Movementstate.attack1;
-                anim.SetInteger("state", (int)state);
-            }
-            else
-            {
-                Vector2 direction = player.position - transform.position;
-                direction.y = 0;
-                direction.Normalize();
-                transform.Translate(direction * 2f * Time.deltaTime);
-                UpdateAnimationStatde();
-            }
+            inRange = false;
         }
-    }
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Player")) {
-            enemyToActivate.SetActive(true);
-            playerholder = true;
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player"))
-        {
-            playerholder = false;
-        }
-    }
-
-    public void UpdateAnimationStatde()
-    {
-        if (rg.velocity.x > 0f)
+        if(inRange == false)
         {
             state = Movementstate.run;
-            mask.flipX = false;
-        }else if (rg.velocity.x < 0f)
-        {
-            state = Movementstate.run;
-            mask.flipX = true;
+            StopAwake();
         }
-        if(playerholder == true)
+        if(IsDied == true)
         {
-            state = Movementstate.attack1;
-        }else if (playerholder == false)
+            state = Movementstate.death;
+            anim.SetInteger("state", (int)state);
+            Destroy(gameObject, 1f);
+        }
+    }
+
+    private void EnemyLogic()
+    {
+        distance = Vector2.Distance(transform.position, target.transform.position);
+        if(distance > attackDistance)
         {
+            Move();
+            StopAwake();
+        }else if (attackDistance >= distance && cooling == false)
+        {
+            Attack();
+        }
+
+        if (cooling)
+        {
+            CoolDown();
             state = Movementstate.idle;
+            anim.SetInteger("state", (int)state);
         }
+    }
+
+    private void StopAwake()
+    {
+        cooling = false;
+        attackMode = false;
+        state = Movementstate.idle;
         anim.SetInteger("state", (int)state);
     }
+
+    private void Attack()
+    {
+        timer = intTimer;
+        attackMode = true;
+        state = Movementstate.attack2;
+        anim.SetInteger("state", (int)state);
+    }
+
+    private void Move()
+    {
+        state = Movementstate.run;
+        anim.SetInteger("state", (int)state);
+        if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Attack2"))
+        {
+            Vector2 targetPosition = new Vector2(target.transform.position.x, transform.position.y);
+
+            transform.position = Vector2.MoveTowards(transform.position, targetPosition, moveSpeed *Time.deltaTime);
+        }
+    }
+
+    void CoolDown()
+    {
+        timer -= Time.deltaTime;
+        if (timer <= 0 && cooling && attackMode)
+        {
+            cooling = false;
+            timer = intTimer;
+        }
+    }
+
+    private void RayCastDebug()
+    {
+        if(distance < attackDistance)
+        {
+            Debug.DrawRay(rayCast.position, Vector2.left * rayCastLenght, Color.red);
+        }
+        else if (attackDistance > distance)
+        {
+            Debug.DrawRay(rayCast.position, Vector2.left * rayCastLenght, Color.green);
+        }
+
+    }
+
+    private void OnTriggerEnter2D(Collider2D trig)
+    {
+        if (trig.CompareTag("Player")) {
+            target = trig.gameObject;
+            inRange = true;
+        }
+
+        if (trig.CompareTag("Player_Dame"))
+        {
+            collisionCount++;
+            if (collisionCount == 3)
+            {
+                IsDied = true;
+            }
+        }
+    }
+
+    public void TriggerCooling()
+    {
+        cooling = false;
+    }
+
 }

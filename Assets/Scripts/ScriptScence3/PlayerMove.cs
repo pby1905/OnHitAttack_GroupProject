@@ -62,7 +62,7 @@ public class PlayerMoving : MonoBehaviour
         }
         else if (collisionkhac.gameObject.CompareTag("hitBox"))
         {
-            bloodpre -= 1;
+            bloodpre -= 10;
             BloodBar.UpdateBloodBar(bloodpre, maxblood);
             state = MovemenState.hurt;
             anim.SetInteger("state", (int)state);

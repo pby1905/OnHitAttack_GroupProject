@@ -10,6 +10,8 @@ TagManager:
   - Monster
   - Enemy
   - hitBox
+  - Globin
+  - Player_Dame
   layers:
   - Default
   - TransparentFX
@@ -21,7 +23,7 @@ TagManager:
   - Enemy
   - Wall
   - Monster
-  - 
+  - Player
   - 
   - 
   - 
