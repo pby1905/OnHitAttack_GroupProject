@@ -12,25 +12,34 @@ public class EnemyBehavior : MonoBehaviour
     public float attackDistance; // Minimum distance for attacking
     public float movespeed;
     public float timer; // Timer for cooldown between attack
-
+    public int maxHealth = 100;
+    int currentHealth;
 
     #endregion
+
+    #region Private variables
     private RaycastHit2D hit;
     private GameObject target;
+    
     private Animator animator;
     private float distance; // Store distance b/w enemy and player
     private bool attackMode;
     private bool inRage; // check if player is in range
     private bool cooling; // check if enemy is cooling after attack
     private float intTimer;
-    #region Private variables
-
-
-
-
     #endregion
 
-     void Awake()
+
+     void Start()
+    {
+        rayCast = GameObject.Find("Player").transform;
+        currentHealth = maxHealth;
+    }
+
+
+
+
+    void Awake()
     {
         intTimer = timer;
         animator = GetComponent<Animator>();
@@ -126,6 +135,7 @@ public class EnemyBehavior : MonoBehaviour
         {
             target = trig.gameObject;
             inRage =  true;
+            Flip();
         }
     }
     void RaycastDebugger()
@@ -146,7 +156,39 @@ public class EnemyBehavior : MonoBehaviour
         cooling = true;
 
     }
+    private void Flip()
+    {
+        Vector3 rotation = transform.eulerAngles;
+        if (transform.position.x > rayCast.position.x)
+        {
+            rotation.y = 180;
+        }
+        else
+        {
+            rotation.y = 0;
+        }
 
+        transform.eulerAngles = rotation;
+    }
+    public void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+        animator.SetTrigger("Hurt");
+
+        if (currentHealth <= 0)
+        {
+            Debug.Log("Enemy died!");
+            Die();
+        }
+    }
+
+    void Die()
+    {
+        animator.SetBool("Death", true);
+        this.enabled = false;
+        GetComponent<Collider2D>().enabled = false;
+        this.enabled = false;
+    }
 
 
 }

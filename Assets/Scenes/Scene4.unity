@@ -551,7 +551,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.099741, y: 3.5750732}
+  m_Size: {x: 1.9792986, y: 5.090813}
   m_EdgeRadius: 0
 --- !u!1001 &196275827
 PrefabInstance:
@@ -606,8 +606,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114164791449630524, guid: 145c07d78e4332a40bbf42389a7172e5, type: 3}
+      propertyPath: attackPoint
+      value: 
+      objectReference: {fileID: 2054528303}
+    - target: {fileID: 114164791449630524, guid: 145c07d78e4332a40bbf42389a7172e5, type: 3}
       propertyPath: enemyLayer.m_Bits
       value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 114889116844108038, guid: 145c07d78e4332a40bbf42389a7172e5, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114889116844108038, guid: 145c07d78e4332a40bbf42389a7172e5, type: 3}
+      propertyPath: wallLayer.m_Bits
+      value: 513
       objectReference: {fileID: 0}
     - target: {fileID: 2415909631007368797, guid: 145c07d78e4332a40bbf42389a7172e5, type: 3}
       propertyPath: m_AnchorMax.x
@@ -712,10 +724,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 6301038647891711803, guid: 145c07d78e4332a40bbf42389a7172e5, type: 3}
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 4787624443014810, guid: 145c07d78e4332a40bbf42389a7172e5, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 580599537}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 145c07d78e4332a40bbf42389a7172e5, type: 3}
 --- !u!4 &196275828 stripped
@@ -1022,7 +1031,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a056a73ede3e8d4a828b74e9fba6d1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slider: {fileID: 474339104}
 --- !u!1 &514133708
 GameObject:
   m_ObjectHideFlags: 0
@@ -1857,7 +1865,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 573179896}
-  m_Father: {fileID: 196275828}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -36476,7 +36484,6 @@ GameObject:
   - component: {fileID: 2054528308}
   - component: {fileID: 2054528307}
   - component: {fileID: 2054528309}
-  - component: {fileID: 2054528318}
   - component: {fileID: 2054528319}
   - component: {fileID: 2054528310}
   - component: {fileID: 2054528315}
@@ -36671,25 +36678,9 @@ MonoBehaviour:
     m_Bits: 128
   rayCastLength: 6
   attackDistance: 4
-  movespeed: 2
+  movespeed: 4
   timer: 2
---- !u!114 &2054528318
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2054528303}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 443f701736005c747b5ee3a5ed567a9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 196275828}
-  isFlipped: 1
-  health: 0
-  maxhealth: 3
-  healthbar: {fileID: 0}
+  maxHealth: 100
 --- !u!114 &2054528319
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36703,7 +36694,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHealth: {fileID: 1809179094}
-  damage: 1
+  damage: 20
 --- !u!1 &2142343541
 GameObject:
   m_ObjectHideFlags: 0
@@ -36828,6 +36819,7 @@ SceneRoots:
   - {fileID: 2142343542}
   - {fileID: 771270345}
   - {fileID: 1326512870}
+  - {fileID: 580599537}
   - {fileID: 196275827}
   - {fileID: 1158428250}
   - {fileID: 1372641028}
