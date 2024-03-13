@@ -24,7 +24,7 @@ public class Scence1_MovementEthan : MonoBehaviour
     [SerializeField] float jumpPower = 150;
     bool jump;
     public int maxHealth = 100;
-    int currentHealth;
+    public int currentHealth;
 
     public Transform attackPoint;
     public float attackRange = 0.35f;
@@ -51,6 +51,7 @@ public class Scence1_MovementEthan : MonoBehaviour
     {
         currentHealth = maxHealth;
         fillBar.UpdateBar(currentHealth, maxHealth);
+        ManageEthanBlood.instance.scene1_CurrentHealth = currentHealth;
     }
 
    
@@ -182,6 +183,7 @@ public class Scence1_MovementEthan : MonoBehaviour
     {
         currentHealth -= damage;
         fillBar.UpdateBar(currentHealth, maxHealth);
+        ManageEthanBlood.instance.scene1_CurrentHealth = currentHealth;
         animator.SetTrigger("Hurt");
 
         if (currentHealth <= 0)
@@ -191,17 +193,21 @@ public class Scence1_MovementEthan : MonoBehaviour
         }
     }
 
+   
+
     public void Healing(int plusmark)
     {
         if (currentHealth < 100)
         {
             currentHealth += plusmark;
             fillBar.UpdateBar(currentHealth, maxHealth);
+            ManageEthanBlood.instance.scene1_CurrentHealth = currentHealth;
 
             if (currentHealth >= 100)
             {
                 currentHealth = 100;
                 fillBar.UpdateBar(currentHealth, maxHealth);
+                ManageEthanBlood.instance.scene1_CurrentHealth = currentHealth;
             }
         }
 

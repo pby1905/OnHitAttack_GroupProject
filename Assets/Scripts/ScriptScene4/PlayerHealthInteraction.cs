@@ -1,22 +1,23 @@
+using EthanTheHero;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealthInteraction : MonoBehaviour
 {
     public int maxHealth = 100;
     public int currentHealth;
-
-    public PlayerHealth healthbar;
+    public FillBar healthbar;
 
    
 
     void Start()
     {
-        currentHealth = maxHealth;
-        healthbar.SetHealth(maxHealth);
+        currentHealth = ManageEthanBlood.instance.scene1_CurrentHealth;
+        healthbar.UpdateBar(currentHealth, maxHealth);
     }
 
     /*void Update()
@@ -30,11 +31,35 @@ public class PlayerHealthInteraction : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
-        healthbar.SetHealth(currentHealth);
+        
+        healthbar.UpdateBar(currentHealth, maxHealth);
 
-        if(currentHealth < 0)
+        if (currentHealth <= 0)
         {
-            Destroy(gameObject);
+            Die();
         }
+    }
+    public void Healing(int plusmark)
+    {
+        if (currentHealth < 100)
+        {
+            currentHealth += plusmark;
+            healthbar.UpdateBar(currentHealth, maxHealth);
+
+            if (currentHealth >= 100)
+            {
+                currentHealth = 100;
+                healthbar.UpdateBar(currentHealth, maxHealth);
+            }
+        }
+
+    }
+
+
+
+    public void Die()
+    {
+        Destroy(gameObject);
+        SceneManager.LoadScene("Scene1");
     }
 }

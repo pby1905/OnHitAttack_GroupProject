@@ -47,7 +47,8 @@ public class Scence2_MovementEthan : MonoBehaviour
     }
     void Start()
     {
-        currentHealth = maxHealth;
+        currentHealth = ManageEthanBlood.instance.scene1_CurrentHealth;
+        //Debug.Log("current:" + ManageEthanBlood.instance.scene1_CurrentHealth);
         fillBar.UpdateBar(currentHealth, maxHealth);
     }
 
