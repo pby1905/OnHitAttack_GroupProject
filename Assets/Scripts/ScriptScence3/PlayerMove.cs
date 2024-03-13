@@ -27,11 +27,11 @@ public class PlayerMoving : MonoBehaviour
         BloodBar.UpdateBloodBar(bloodpre, maxblood);
     }
 
-    private void OnMouseDown()
-    {
-        bloodpre -= 1;
-        BloodBar.UpdateBloodBar(bloodpre, maxblood);
-    }
+    //private void OnMouseDown()
+    //{
+    //    bloodpre -= 1;
+    //    BloodBar.UpdateBloodBar(bloodpre, maxblood);
+    //}
     public void Awake()
     {
         body = GetComponent<Rigidbody2D>();

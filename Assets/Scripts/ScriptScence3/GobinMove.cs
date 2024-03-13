@@ -72,7 +72,7 @@ public class GobinMove : MonoBehaviour
         {
             state = Movementstate.death;
             anim.SetInteger("state", (int)state);
-            Destroy(gameObject, 1f);
+            Destroy(gameObject, 2f);
         }
     }
 
