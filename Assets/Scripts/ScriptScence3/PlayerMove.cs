@@ -18,13 +18,13 @@ public class PlayerMoving : MonoBehaviour
     private enum MovemenState { idle, running, jumping, hurt, attack1, attack2, attack3, death}; 
     private MovemenState state = MovemenState.idle;
 
-    public BloodBar BloodBar;
-    [SerializeReference]public float bloodpre;
-    public float maxblood = 10;
+    public FillBar BloodBar;
+    [SerializeReference]public int bloodpre;
+    public int maxblood = 100;
     void Start()
     {
-        bloodpre = maxblood;
-        BloodBar.UpdateBloodBar(bloodpre, maxblood);
+        bloodpre = ManageEthanBlood.instance.scene1_CurrentHealth;
+        BloodBar.UpdateBar(bloodpre, maxblood);
     }
 
     //private void OnMouseDown()
@@ -63,7 +63,7 @@ public class PlayerMoving : MonoBehaviour
         else if (collisionkhac.gameObject.CompareTag("hitBox"))
         {
             bloodpre -= 10;
-            BloodBar.UpdateBloodBar(bloodpre, maxblood);
+            BloodBar.UpdateBar(bloodpre, maxblood);
             state = MovemenState.hurt;
             anim.SetInteger("state", (int)state);
         }

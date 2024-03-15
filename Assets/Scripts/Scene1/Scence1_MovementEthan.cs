@@ -143,6 +143,7 @@ public class Scence1_MovementEthan : MonoBehaviour
         
         animator.SetFloat("xVelocity", Mathf.Abs(rb.velocity.x));
     }
+    #endregion
 
     void Attack()
     {
@@ -188,6 +189,7 @@ public class Scence1_MovementEthan : MonoBehaviour
 
         if (currentHealth <= 0)
         {
+            fillBar.UpdateBar(0, maxHealth);
             Debug.Log("Player died!");
             Die();
         }
@@ -222,6 +224,6 @@ public class Scence1_MovementEthan : MonoBehaviour
 
 
     }
-    #endregion
+    
 
 }

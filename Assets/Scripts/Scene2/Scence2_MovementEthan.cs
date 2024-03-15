@@ -95,6 +95,23 @@ public class Scence2_MovementEthan : MonoBehaviour
         }
     }
 
+    public void Healing(int plusmark)
+    {
+        if (currentHealth < 100)
+        {
+            currentHealth += plusmark;
+            fillBar.UpdateBar(currentHealth, maxHealth);
+            ManageEthanBlood.instance.scene1_CurrentHealth = currentHealth;
+
+            if (currentHealth >= 100)
+            {
+                currentHealth = 100;
+                fillBar.UpdateBar(currentHealth, maxHealth);
+                ManageEthanBlood.instance.scene1_CurrentHealth = currentHealth;
+            }
+        }
+
+    }
     void Movement(float dir, bool jumpFlag)
     {
         #region Jump && Crouch
@@ -147,7 +164,7 @@ public class Scence2_MovementEthan : MonoBehaviour
         //Set the float xVelocity according to the x value of the RigiBody2D velocity
         animator.SetFloat("xVelocity", Mathf.Abs(rb.velocity.x));
     }
-
+    #endregion
     void Attack()
     {
        
@@ -174,10 +191,12 @@ public class Scence2_MovementEthan : MonoBehaviour
     {
         currentHealth -= damage;
         fillBar.UpdateBar(currentHealth, maxHealth);
+        ManageEthanBlood.instance.scene1_CurrentHealth = currentHealth;
         animator.SetTrigger("Hurt");
 
         if (currentHealth <= 0)
         {
+            fillBar.UpdateBar(0, maxHealth);
             Debug.Log("Ethan died!");
             Die();
         }
@@ -192,6 +211,6 @@ public class Scence2_MovementEthan : MonoBehaviour
 
 
     }
-    #endregion
+    
 
 }
