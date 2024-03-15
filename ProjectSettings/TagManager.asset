@@ -12,11 +12,14 @@ TagManager:
   - hitBox
   - Globin
   - Player_Dame
+  - Audio
+  - Door
+  - Shrooms
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
   - Ethan
@@ -51,6 +54,9 @@ TagManager:
     locked: 0
   - name: Background
     uniqueID: 2541206173
+    locked: 0
+  - name: Ground
+    uniqueID: 34153671
     locked: 0
   - name: Wall
     uniqueID: 1434238181
