@@ -204,7 +204,7 @@ public class EnemyBehavior : MonoBehaviour
         GetComponent<Collider2D>().enabled = false;
         this.enabled = false;
         Destroy(gameObject);
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("WinGame");
     }
    
 
