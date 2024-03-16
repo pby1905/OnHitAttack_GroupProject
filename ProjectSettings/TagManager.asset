@@ -4,26 +4,30 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Wall
-  - ground
   - Ethan
+  - EnemyGlobin
+  - ground
+  - Monster
+  - Enemy
+  - hitBox
+  - Globin
+  - Player_Dame
+  - Audio
   - Door
   - Shrooms
-  - Audio
-  - Enemy
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Ethan
+  - Ground
   - Water
   - UI
-  - GroundLayer
-  - Player
+  - Ethan
   - Enemy
-  - Ground
-  - Door
-  - Shrooms
+  - Wall
+  - Monster
+  - Player
+  - 
   - 
   - 
   - 
@@ -48,24 +52,24 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Ground
-    uniqueID: 2156115119
-    locked: 0
   - name: Background
-    uniqueID: 2526418389
+    uniqueID: 2541206173
+    locked: 0
+  - name: Ground
+    uniqueID: 34153671
     locked: 0
   - name: Wall
-    uniqueID: 4285764023
-    locked: 0
-  - name: Ethan
-    uniqueID: 2226392425
+    uniqueID: 1434238181
     locked: 0
   - name: Enemy
-    uniqueID: 399044967
+    uniqueID: 1306060155
     locked: 0
-  - name: Door
-    uniqueID: 6367049
+  - name: Ethan
+    uniqueID: 3398677553
     locked: 0
-  - name: Shrooms
-    uniqueID: 1416830077
+  - name: WallS2
+    uniqueID: 2387962197
+    locked: 0
+  - name: Monster
+    uniqueID: 1795238261
     locked: 0

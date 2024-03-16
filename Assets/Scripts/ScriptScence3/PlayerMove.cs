@@ -21,25 +21,23 @@ public class PlayerMoving : MonoBehaviour
     public FillBar BloodBar;
     [SerializeReference]public int bloodpre;
     public int maxblood = 100;
-    Scene1_AudioManager audioManager;
     void Start()
     {
         bloodpre = ManageEthanBlood.instance.scene1_CurrentHealth;
         BloodBar.UpdateBar(bloodpre, maxblood);
     }
 
-    private void OnMouseDown()
-    {
-        bloodpre -= 10;
-        BloodBar.UpdateBar(bloodpre, maxblood);
-    }
+    //private void OnMouseDown()
+    //{
+    //    bloodpre -= 1;
+    //    BloodBar.UpdateBloodBar(bloodpre, maxblood);
+    //}
     public void Awake()
     {
         body = GetComponent<Rigidbody2D>();
         mask = GetComponent<SpriteRenderer>();
         collider2D = GetComponent<Collider2D>();
         anim = GetComponent<Animator>();
-        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<Scene1_AudioManager>();
     }
 
     void Update()
@@ -64,7 +62,6 @@ public class PlayerMoving : MonoBehaviour
         }
         else if (collisionkhac.gameObject.CompareTag("hitBox"))
         {
-            audioManager.PlaySFX(audioManager.attack);
             bloodpre -= 10;
             BloodBar.UpdateBar(bloodpre, maxblood);
             state = MovemenState.hurt;
