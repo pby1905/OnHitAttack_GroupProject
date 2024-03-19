@@ -15,8 +15,8 @@ public class EnemyBehavior : MonoBehaviour
     public float timer; // Timer for cooldown between attack
     public int maxHealth = 100;
     public int currentHealth;
-    public GameObject bloodEffect;
-    
+    public Transform leftLimit;
+    public Transform rightLimit;
 
 
     #endregion
@@ -42,6 +42,7 @@ public class EnemyBehavior : MonoBehaviour
 
     void Awake()
     {
+
         intTimer = timer;
         animator = GetComponent<Animator>();
     }
@@ -157,19 +158,28 @@ public class EnemyBehavior : MonoBehaviour
         cooling = true;
 
     }
+    
+
+
+
+
     private void Flip()
     {
         Vector3 rotation = transform.eulerAngles;
         if (transform.position.x > rayCast.position.x)
         {
+            Debug.Log("Flipping left");
             rotation.y = 180;
         }
         else
         {
+            Debug.Log("Flipping right");
             rotation.y = 0;
         }
 
         transform.eulerAngles = rotation;
+
+
     }
 
     void OnCollisionEnter2D(Collision2D collision)
