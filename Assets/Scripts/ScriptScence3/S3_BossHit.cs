@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossHit : MonoBehaviour
+public class S3_BossHit : MonoBehaviour
 {
     void OnTriggerEnter2D(Collider2D trig)
     {
@@ -10,10 +10,10 @@ public class BossHit : MonoBehaviour
         if (trig.CompareTag("Ethan"))
         {
             Debug.Log("Enemy hit:" + trig.gameObject.name);
-            Scence1_MovementEthan targetHealth = trig.GetComponent<Scence1_MovementEthan>();
+            S3_MovementEthan targetHealth = trig.GetComponent<S3_MovementEthan>();
             if (targetHealth != null)
             {
-                targetHealth.TakeDamage(15);
+                targetHealth.TakeDamage(30);
             }
         }
 

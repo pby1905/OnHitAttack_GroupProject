@@ -148,7 +148,7 @@ public class Scence1_MovementEthan : MonoBehaviour
     void Attack()
     {
         animator.SetTrigger("Attack");
-        audioManager.PlaySFX(audioManager.attack);
+        //audioManager.PlaySFX(audioManager.attack);
         Collider2D[] hitEnemies =  Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
         foreach(Collider2D enemy in hitEnemies)
         {
