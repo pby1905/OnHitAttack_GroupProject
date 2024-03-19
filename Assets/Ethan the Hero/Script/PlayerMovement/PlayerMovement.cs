@@ -40,7 +40,7 @@ namespace EthanTheHero
 		[HideInInspector] public bool wallSliding;
 		private RaycastHit2D wall;
 		private float jumpTime;
-
+        Scene2_AudioManager audioManager;
         #endregion
 
         #region MONOBEHAVIOUR
@@ -48,8 +48,9 @@ namespace EthanTheHero
 		{
 			myBody = GetComponent<Rigidbody2D>();
 			myAnim = GetComponent<Animator>();
-			
-		}
+            audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<Scene2_AudioManager>();
+
+        }
 		void Update()
 		{
 			if (isDashing || wallJump || myAnim.GetCurrentAnimatorStateInfo(0).IsName("Attack01") || myAnim.GetCurrentAnimatorStateInfo(0).IsName("Attack02") || myAnim.GetCurrentAnimatorStateInfo(0).IsName("Attack03"))

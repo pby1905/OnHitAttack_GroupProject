@@ -4,15 +4,17 @@ using UnityEngine;
 
 namespace EthanTheHero
 {
-	public class PlayerAttackMethod : MonoBehaviour
+    
+    public class PlayerAttackMethod : MonoBehaviour
 	{
-		#region FIELD
-		/*public GameObject attackPoint;
+        Scene2_AudioManager audioManager;
+        #region FIELD
+        /*public GameObject attackPoint;
 		public float attackRange = 0.35f;
 		public int attackDamage = 40;
 		public LayerMask enemyLayer;*/
 
-		private PlayerAnimation playerAnim;
+        private PlayerAnimation playerAnim;
 		private PlayerMovement playerMv;
 		private Animator myAnim;
 		private Rigidbody2D myBody;
@@ -43,8 +45,9 @@ namespace EthanTheHero
 			myBody = GetComponent<Rigidbody2D>();
 			playerMv = GetComponent<PlayerMovement>();
 			takeHit = GetComponent<PlayerAttackEnemy>();
+            
 
-		}
+        }
 
 		void Update()
 		{
@@ -72,15 +75,16 @@ namespace EthanTheHero
         private void BasicAttackCombo()
 		{
 
-			//Combo attack mechanic
-			if (Input.GetMouseButtonDown(0) && !myAnim.GetCurrentAnimatorStateInfo(0).IsName("Attack01") && !myAnim.GetCurrentAnimatorStateInfo(0).IsName("Attack02") && !myAnim.GetCurrentAnimatorStateInfo(0).IsName("Attack03") && playerMv.grounded)
+          
+            //Combo attack mechanic
+            if (Input.GetMouseButtonDown(0) && !myAnim.GetCurrentAnimatorStateInfo(0).IsName("Attack01") && !myAnim.GetCurrentAnimatorStateInfo(0).IsName("Attack02") && !myAnim.GetCurrentAnimatorStateInfo(0).IsName("Attack03") && playerMv.grounded)
 			{
 				
 				myAnim.SetTrigger(attack01);
 				
 			}
-          
 
+            audioManager.PlaySFX(audioManager.attack);
             //Set combo attack 01 
             if (myAnim.GetCurrentAnimatorStateInfo(0).IsName("Attack01"))
 			{
@@ -105,9 +109,9 @@ namespace EthanTheHero
                 else if (myAnim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1 && !atkButtonClickedOnAtk01)
 					myAnim.SetTrigger(notAttacking);
 			}
-
-			//Set combo attack 02
-			if (myAnim.GetCurrentAnimatorStateInfo(0).IsName("Attack02"))
+            audioManager.PlaySFX(audioManager.attack);
+            //Set combo attack 02
+            if (myAnim.GetCurrentAnimatorStateInfo(0).IsName("Attack02"))
 			{
 				//See if attak button is clicked
 				if (Input.GetMouseButtonDown(0))
@@ -129,9 +133,9 @@ namespace EthanTheHero
                 else if (myAnim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1 && !atkButtonClickedOnAtk02)
 					myAnim.SetTrigger(notAttacking);
 			}
-
-			//Set combo attack 03
-			if (myAnim.GetCurrentAnimatorStateInfo(0).IsName("Attack03"))
+            audioManager.PlaySFX(audioManager.attack);
+            //Set combo attack 03
+            if (myAnim.GetCurrentAnimatorStateInfo(0).IsName("Attack03"))
 			{
 				//See if attak button is clicked
 				if (Input.GetMouseButtonDown(0))
