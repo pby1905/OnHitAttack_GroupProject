@@ -462,7 +462,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: 6fc934c28f4a61548a11c8c0767f4834, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -517,7 +517,7 @@ GameObject:
   m_Component:
   - component: {fileID: 174461066}
   - component: {fileID: 174461067}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: Hitbox
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
@@ -592,9 +592,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1230558786190580, guid: 145c07d78e4332a40bbf42389a7172e5, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1821150211701724, guid: 145c07d78e4332a40bbf42389a7172e5, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 1821150211701724, guid: 145c07d78e4332a40bbf42389a7172e5, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1874519716457622, guid: 145c07d78e4332a40bbf42389a7172e5, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4787624443014810, guid: 145c07d78e4332a40bbf42389a7172e5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -780,6 +792,10 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 4491495956398454076, guid: 145c07d78e4332a40bbf42389a7172e5, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5043788912876571857, guid: 145c07d78e4332a40bbf42389a7172e5, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -922,7 +938,7 @@ GameObject:
   - component: {fileID: 232192570}
   - component: {fileID: 232192572}
   - component: {fileID: 232192571}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: EnemyCollider
   m_TagString: Untagged
   m_Icon: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}
@@ -1011,7 +1027,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.033706874, y: 0.3618834}
+  m_Offset: {x: 0.21323428, y: 0.89993966}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -1022,7 +1038,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.6370025, y: 1.6308529}
+  m_Size: {x: 0.99605733, y: 2.7069657}
   m_EdgeRadius: 0
 --- !u!1 &251487136
 GameObject:
@@ -1149,7 +1165,7 @@ GameObject:
   m_Component:
   - component: {fileID: 474339103}
   - component: {fileID: 474339104}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: Healthbar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1300,7 +1316,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: 6fc934c28f4a61548a11c8c0767f4834, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1402,11 +1418,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -28.284145, y: 4.1099286, z: -10}
-
-  m_LocalPosition: {x: -32.66307, y: 4.0360527, z: -10}
-
-
+  m_LocalPosition: {x: -33.479324, y: 4.022281, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1647,7 +1659,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 552816556}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1829,7 +1841,7 @@ GameObject:
   - component: {fileID: 577215434}
   - component: {fileID: 577215436}
   - component: {fileID: 577215435}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1905,7 +1917,7 @@ GameObject:
   - component: {fileID: 577603426}
   - component: {fileID: 577603425}
   - component: {fileID: 577603424}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3112,7 +3124,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: 6fc934c28f4a61548a11c8c0767f4834, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -3495,7 +3507,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1383099738}
   - component: {fileID: 1383099739}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: TriggerArea
   m_TagString: Untagged
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
@@ -3549,7 +3561,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 4.3596835, y: -0.9238907}
+  m_Offset: {x: 4.3596835, y: 1.1274421}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -3560,7 +3572,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 9.719367, y: 0.9967544}
+  m_Size: {x: 9.719367, y: 5.0994186}
   m_EdgeRadius: 0
 --- !u!1 &1385076869
 GameObject:
@@ -37412,7 +37424,7 @@ GameObject:
   - component: {fileID: 1811594654}
   - component: {fileID: 1811594656}
   - component: {fileID: 1811594655}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37548,7 +37560,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: 6fc934c28f4a61548a11c8c0767f4834, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -37913,49 +37925,19 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2054528308}
-  - component: {fileID: 2054528307}
   - component: {fileID: 2054528309}
   - component: {fileID: 2054528319}
-  - component: {fileID: 2054528310}
   - component: {fileID: 2054528315}
   - component: {fileID: 2054528316}
   - component: {fileID: 2054528317}
   - component: {fileID: 2054528320}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: 'Enemy '
-  m_TagString: Weak
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2054528307
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2054528303}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 1
-  drawGizmos: 1
-  detailedGizmos: 0
-  startEndModifier:
-    addPoints: 0
-    exactStartPoint: 3
-    exactEndPoint: 3
-    useRaycasting: 0
-    mask:
-      serializedVersion: 2
-      m_Bits: 4294967295
-    useGraphRaycasting: 0
-  traversableTags: -1
-  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-  graphMask:
-    value: -1
 --- !u!4 &2054528308
 Transform:
   m_ObjectHideFlags: 0
@@ -38003,22 +37985,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &2054528310
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2054528303}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54f80c77ed0e3724c83878d8b2e1b5a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 196275828}
-  speed: 200
-  nextWaypointDistance: 3
-  enemyGraphic: {fileID: 2054528308}
 --- !u!212 &2054528315
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -38114,7 +38080,8 @@ MonoBehaviour:
   timer: 2
   maxHealth: 100
   currentHealth: 0
-  bloodEffect: {fileID: 0}
+  leftLimit: {fileID: 0}
+  rightLimit: {fileID: 0}
 --- !u!114 &2054528319
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38349,7 +38316,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2145114479}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: RayCast
   m_TagString: Untagged
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
@@ -38365,7 +38332,7 @@ Transform:
   m_GameObject: {fileID: 2145114478}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.95, y: 1.27, z: 0}
+  m_LocalPosition: {x: 2.53, y: 0.82, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -38427,6 +38394,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -25
       objectReference: {fileID: 0}
+    - target: {fileID: 6386216248758088163, guid: c5d7150c12c7c7e43a04fa9ab245e6de, type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7915927079354988772, guid: c5d7150c12c7c7e43a04fa9ab245e6de, type: 3}
       propertyPath: InitialModule.gravitySource
       value: 1
@@ -38449,15 +38420,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7915927079354988772, guid: c5d7150c12c7c7e43a04fa9ab245e6de, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
-      value: 0.6075471
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7915927079354988772, guid: c5d7150c12c7c7e43a04fa9ab245e6de, type: 3}
       propertyPath: InitialModule.startColor.maxColor.g
-      value: 0.09514412
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7915927079354988772, guid: c5d7150c12c7c7e43a04fa9ab245e6de, type: 3}
       propertyPath: InitialModule.startColor.maxColor.r
-      value: 0.09514412
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
