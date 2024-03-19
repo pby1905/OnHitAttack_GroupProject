@@ -1,11 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Xml.Serialization;
 using UnityEngine;
-using static UnityEngine.RuleTile.TilingRuleOutput;
-using Transform = UnityEngine.Transform;
 
-public class Scence2_MovementEthan : MonoBehaviour
+public class S3_MovementEthan : MonoBehaviour
 {
     Rigidbody2D rb;
     public Animator animator;
@@ -43,7 +40,7 @@ public class Scence2_MovementEthan : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<Scene2_AudioManager>();
+        //audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<Scene2_AudioManager>();
     }
     void Start()
     {
@@ -55,7 +52,7 @@ public class Scence2_MovementEthan : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-      
+
         horizontalValue = Input.GetAxisRaw("Horizontal");
 
         //if we press Jump button enable jump
@@ -116,7 +113,7 @@ public class Scence2_MovementEthan : MonoBehaviour
     {
         #region Jump && Crouch
 
-       
+
 
         //If we press Crouch we disable standing collider + player crouching
         //Reduce the speed
@@ -134,7 +131,7 @@ public class Scence2_MovementEthan : MonoBehaviour
 
         }
 
-       
+
         animator.SetBool("Jump", jumpFlag);
 
         #endregion
@@ -143,7 +140,7 @@ public class Scence2_MovementEthan : MonoBehaviour
         //Set value of x using dir and speed
         float xVal = dir * speed * Time.fixedDeltaTime;
 
-     
+
         //Create Vec2 for the velocity
         Vector2 targetVelocity = new Vector2(xVal, rb.velocity.y);
         //Set the player's veclocity
@@ -167,13 +164,13 @@ public class Scence2_MovementEthan : MonoBehaviour
     #endregion
     void Attack()
     {
-       
+
         animator.SetTrigger("Attack");
-        audioManager.PlaySFX(audioManager.attack);
+        //audioManager.PlaySFX(audioManager.attack);
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
         foreach (Collider2D enemy in hitEnemies)
         {
-            Monster_behavior enemyBehaviour = enemy.GetComponent<Monster_behavior>();
+            GobinMove enemyBehaviour = enemy.GetComponent<GobinMove>();
             if (enemyBehaviour != null)
             {
 
@@ -183,7 +180,7 @@ public class Scence2_MovementEthan : MonoBehaviour
             else
             {
 
-                Scene2_Boss_behaviour bossBehaviour = enemy.GetComponent<Scene2_Boss_behaviour>();
+                S3_Boss_Behaviour bossBehaviour = enemy.GetComponent<S3_Boss_Behaviour>();
                 if (bossBehaviour != null)
                 {
                     bossBehaviour.TakeDamage(50);
@@ -192,7 +189,7 @@ public class Scence2_MovementEthan : MonoBehaviour
             }
         }
     }
-   
+
 
     void OnDrawGizmosSelected()
     {
@@ -225,6 +222,5 @@ public class Scence2_MovementEthan : MonoBehaviour
 
 
     }
-    
 
 }

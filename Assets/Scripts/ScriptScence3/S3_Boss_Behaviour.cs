@@ -1,11 +1,8 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using static GobinMove;
 
-public class GobinMove : MonoBehaviour
+public class S3_Boss_Behaviour : MonoBehaviour
 {
     public Animator anim;
     public Transform rayCast;
@@ -16,7 +13,7 @@ public class GobinMove : MonoBehaviour
     public float timer;
     public Transform leftLimit;
     public Transform rightLimit;
-    public int maxHealth = 100;
+    public int maxHealth = 200;
     int currentHealth;
     //public Transform attackPoint;
     //public float attackRange = 0.35f;
@@ -220,5 +217,4 @@ public class GobinMove : MonoBehaviour
 
 
     }
-
 }
