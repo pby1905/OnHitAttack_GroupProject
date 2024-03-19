@@ -42,7 +42,7 @@ public class EnemyBehavior : MonoBehaviour
 
     void Awake()
     {
-
+        Flip();
         intTimer = timer;
         animator = GetComponent<Animator>();
     }
@@ -156,12 +156,9 @@ public class EnemyBehavior : MonoBehaviour
     public void TriggerCooling()
     {
         cooling = true;
-
+        Flip();
     }
     
-
-
-
 
     private void Flip()
     {
