@@ -1,26 +1,24 @@
-using EthanTheHero;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Healing : MonoBehaviour
+public class S3_Ethan_Healing : MonoBehaviour
 {
-    // Start is called before the first frame update
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("Collision with: " + collision.gameObject.name);
-        if (collision.tag == "Player")
+        if (collision.tag == "Ethan")
         {
 
-            PlayerHealthInteraction targetHealth = collision.GetComponent<PlayerHealthInteraction>();
+            S3_MovementEthan targetHealth = collision.GetComponent<S3_MovementEthan>();
             if (targetHealth != null)
             {
-                targetHealth.Healing(40);
+                targetHealth.Healing(10);
                 Destroy(gameObject);
             }
             else
             {
-                Debug.LogError("Scene4 component is missing on Ethan object.");
+                Debug.LogError("Scence1_MovementEthan component is missing on Ethan object.");
             }
 
 
