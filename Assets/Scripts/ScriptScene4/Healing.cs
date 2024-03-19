@@ -15,7 +15,7 @@ public class Healing : MonoBehaviour
             PlayerHealthInteraction targetHealth = collision.GetComponent<PlayerHealthInteraction>();
             if (targetHealth != null)
             {
-                targetHealth.Healing(20);
+                targetHealth.Healing(40);
                 Destroy(gameObject);
             }
             else

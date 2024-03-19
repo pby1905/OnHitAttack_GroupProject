@@ -191,7 +191,7 @@ public class EnemyBehavior : MonoBehaviour
         if (currentHealth <= 0)
         {
             Die();
-            
+            SceneManager.LoadScene("WinGame");
         }
         
     }
@@ -204,7 +204,6 @@ public class EnemyBehavior : MonoBehaviour
         GetComponent<Collider2D>().enabled = false;
         this.enabled = false;
         Destroy(gameObject);
-        SceneManager.LoadScene("WinGame");
     }
    
 
